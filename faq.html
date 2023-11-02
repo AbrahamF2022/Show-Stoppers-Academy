@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Show Stoppers Academy</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column h-100">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html">Show Stoppers Academy</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">Mission Statement</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Register</a></li>
+        <li class="nav-item"><a class="nav-link" href="pricing.html">Donate</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">Events</a></li>
+    </ul>
+</div>
+
+                  
+
+
+
+
+    <!-- Include your existing CSS, JavaScript, and other resources here -->
+
+
+
+
+    <!-- Your existing HTML content goes here -->
+
+   
+
+    <!-- Include your existing JavaScript, or add additional scripts here -->
+
+
+
+
+                            
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                                    <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
+                                    <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                    <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
+                                    <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
+                                </ul>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+      <body>
+          <h1 class="slider-title">Event Pictures</h1>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="PIC.png" alt="Image 1"></div>
+            <div class="slide"><img src="PIC.png" alt="Image 2"></div>
+            <div class="slide"><img src="PIC.png" alt="Image 3"></div>
+        </div>
+        <button class="prev-slide" onclick="changeSlide(-1)">Previous</button>
+        <button class="next-slide" onclick="changeSlide(1)">Next</button>
+    </div>
+<script>
+    const slider = document.querySelector(".slider");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    let currentIndex = 0;
+
+    // Function to change the slide
+    function changeSlide(offset) {
+        currentIndex += offset;
+        if (currentIndex < 0) {
+            currentIndex = slider.children.length - 1;
+        } else if (currentIndex >= slider.children.length) {
+            currentIndex = 0;
+        }
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Add event listeners to the buttons
+    prevButton.addEventListener("click", () => changeSlide(-1));
+    nextButton.addEventListener("click", () => changeSlide(1));
+</script>
+
+    <script src="script.js"></script>
+</body>
+        <footer class="bg-black py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Show Stoppers Academy</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

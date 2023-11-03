@@ -10864,7 +10864,7 @@ html {
         flex: 0 0 100%;
         max-width: 100%;
         position: relative;
-        padding-top: 56.25%; /* 16:9 aspect ratio (adjust as needed) */
+        padding-top: 56.25%;/* 16:9 aspect ratio (adjust as needed) */
     }
 
     .fit-video {
@@ -10898,11 +10898,11 @@ html {
 }
 
 .prev-slide {
-    left: 10px;
+    left: 40px;
 }
 
 .next-slide {
-    right: 10px;
+    right: 40px;
 }
 
 /* Add this to your CSS stylesheet */

@@ -12,6 +12,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+      
+
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
@@ -70,16 +72,34 @@
             </nav>
             
       <body>
-          <h1 class="slider-title">Event Pictures</h1>
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slide"><img src="PIC.png" alt="Image 1"></div>
-            <div class="slide"><img src="PIC.png" alt="Image 2"></div>
-            <div class="slide"><img src="PIC.png" alt="Image 3"></div>
+          <h1 class="slider-title">Event Highlights</h1>
+  <div class="slider-container">
+    <div class="slider">
+        <div class="slide">
+            <video controls class="fit-video">
+                <source src="showstoppers%202030.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-        <button class="prev-slide" onclick="changeSlide(-1)">Previous</button>
-        <button class="next-slide" onclick="changeSlide(1)">Next</button>
+        <div class="slide">
+            <video controls class="fit-video">
+                <source src="ShowStoppers%202031.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+       <!-- <div class="slide">
+            <video controls class="fit-video">
+                <source src="video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div> -->
     </div>
+     <div class="slider-buttons text-center mb-3">
+                    <button class="prev-slide" onclick="changeSlide(-1)">Previous</button>
+                    <button class="next-slide" onclick="changeSlide(1)">Next</button>
+                </div>
+</div>
+
 <script>
     const slider = document.querySelector(".slider");
     const prevButton = document.getElementById("prevButton");

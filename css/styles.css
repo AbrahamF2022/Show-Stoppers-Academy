@@ -10848,30 +10848,32 @@ html {
 }
 /* styles.css */
 /* styles.css */
-.slider-container {
-    max-width: 80%;
-    margin: 0 auto;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background: #fff;
-}
 
-.slider {
-    display: flex;
-    transition: transform 0.5s;
-    border: 2px solid #ccc;
-}
+  .slider-container {
+        position: relative;
+        max-width: 100%;
+        overflow: hidden;
+    }
 
-.slide {
-    flex: 0 0 100%;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-right: 2px solid #ccc;
-   height: 500px; /* Set your desired height here */
-}
+    .slider {
+        display: flex;
+        transition: transform 0.5s;
+    }
+
+    .slide {
+        flex: 0 0 100%;
+        max-width: 100%;
+        position: relative;
+        padding-top: 56.25%; /* 16:9 aspect ratio (adjust as needed) */
+    }
+
+    .fit-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80%;
+    }
 
 .slide:last-child {
     border-right: none;
@@ -10928,4 +10930,29 @@ html {
     text-align: center;
     font-weight: bold;
     margin: 20px 0;
+    font-size: 40px;
 }
+    .slide video {
+        max-width: auto;  /* Make sure the video does not exceed the slide width */
+        max-height: auto; /* Make sure the video does not exceed the slide height */
+        <!--width: auto;      /* Maintain the video's aspect ratio */
+        <!--height: auto;     /* Maintain the video's aspect ratio */
+    }
+
+.slider-buttons {
+            text-align: center;
+        }
+
+        .prev-slide {
+            position: absolute;
+            left: 10px; /* Adjust the left position as needed */
+            top: 10%;
+            transform: translateY(-50%);
+        }
+
+        .next-slide {
+            position: absolute;
+            right: 10px; /* Adjust the right position as needed */
+            top: 10%;
+            transform: translateY(-50%);
+        }

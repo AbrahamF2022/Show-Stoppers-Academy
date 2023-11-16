@@ -41,119 +41,18 @@
                 </div>
             </div>
         </nav>
+        <!-- Register Today Section -->
+        <section class="bg-light py-5">
+            <div class="container px-5 my-5 text-center">
+                <h2 class="display-4 fw-bolder text-black mb-3" style="font-size: 50px;">Register Today</h2>
+                <p class="lead text-black mb-4" style="font-size: 20px;">Join us and be a part of our community. Fill out the form below to register for upcoming events and programs.</p>
+            </div>
+        </section>
+
         <!-- Form Container -->
         <div id="form-conta">
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYWMmSrt0FWp5aN35vPcJfma3wHd2hyMaR-u5RhtjIaU_5kA/viewform?embedded=true" width="800" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
-   
-    
-   
-
-     <!--   <div class="cont">
-            <!-- Form 1 -->
-         <!--   <form id="Form1">
-                <h3-hi>Create Account</h3-hi>
-                <input type="text" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
-
-                <div class="btn-box1">
-                    <button type="button" id="Next1">Next</button>
-                </div>
-            </form>
-
-            <!-- Form 2 -->
-          <!--  <form id="Form2">
-                <h3-hi>Social Links</h3-hi>
-                <input type="text" placeholder="Medium" required>
-                <input type="text" placeholder="Github" required>
-                <input type="text" placeholder="LinkedIn" required>
-
-                <div class="btn-box1">
-                    <button type="button" id="Back1">Back</button>
-                    <button type="button" id="Next2">Next</button>
-                </div>
-            </form>
-
-            <!-- Form 3 -->
-          <!--  <form id="Form3">
-                <h3-hi>Personal Info</h3-hi>
-                <input type="text" id="firstName" placeholder="First Name" required>
-                <input type="text" id="lastName" placeholder="Last Name" required>
-                <input type="text" id="mobileNo" placeholder="Mobile No." required>
-
-                <div class="btn-box1">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-
-            <div class="step-row">
-                <div id="progress"></div>
-                <div class="step-col"><small>Step</small></div>
-                <div class="step-col"><small>Step</small></div>
-                <div class="step-col"><small>Step</small></div>
-            </div>
-        </div>
-
-        <script>
-            var Form1 = document.getElementById("Form1");
-            var Form2 = document.getElementById("Form2");
-            var Form3 = document.getElementById("Form3");
-            var Next1 = document.getElementById("Next1");
-            var Next2 = document.getElementById("Next2");
-            var Back1 = document.getElementById("Back1");
-            var progress = document.getElementById("progress");
-
-            Next1.onclick = function () {
-                Form1.style.left = "-450px";
-                Form2.style.left = "40px";
-                progress.style.width = "240px";
-            };
-
-            Back1.onclick = function () {
-                Form1.style.left = "40px";
-                Form2.style.left = "450px";
-                progress.style.width = "120px";
-            };
-
-            Next2.onclick = function () {
-                Form2.style.left = "-450px";
-                Form3.style.left = "40px";
-                progress.style.width = "360px";
-            };
-
-            var Form3 = document.getElementById("Form3");
-
-            Form3.addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                var firstName = document.getElementById("firstName").value;
-                var lastName = document.getElementById("lastName").value;
-                var mobileNo = document.getElementById("mobileNo").value;
-
-                var formData = {
-                    firstName: firstName,
-                    lastName: lastName,
-                    mobileNo: mobileNo,
-                };
-
-                fetch('https://script.google.com/macros/s/AKfycbwortcvfSMailCzUkLTODOtoskF8SorBDHvR-SLL9zXhS09dvYL2eUoRl92XFCu6bZl/exec', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        console.log('Success:', data);
-                        // Optionally, you can redirect the user to a thank you page or perform other actions.
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            });
-        </script>
 
     <!-- Footer -->
     <footer class="bg-black py-4 mt-auto footer">

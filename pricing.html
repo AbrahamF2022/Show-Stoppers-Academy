@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Your existing head content -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
@@ -23,6 +24,8 @@
         .form-container {
             text-align: center;
             color: black;
+            max-width: 600px;
+            margin: auto;
         }
         .form-container label {
             display: block; /* Display labels as block elements for better spacing */
@@ -41,7 +44,6 @@
             border: none;
             cursor: pointer;
         }
-       
     </style>
 </head>
 <body class="d-flex flex-column">
@@ -62,25 +64,19 @@
                 </div>
             </div>
         </nav>
-        <!-- Pricing section -->
+     
+        <!--Pricing section -->
         <section class="bg-white py-5">
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
-                    <h1 class="fw-bolder text-black" style="font-size: 50px";>Support Us</h1>
+                    <h1 class="fw-bolder text-black" style="font-size: 50px";>Donate Now!</h1>
                 </div>
-                <div class="form-container">
-                    <!--<h1 class="fw-bolder">Support Us</h1>-->
-                    <form id="donation-form">
-                        <label for="amount"style="font-size: 30px;">Amount: $</label>
-                        <input type="number" id="amount" name="amount" required>
-                        <div id="card-element">
-                            <!-- A Stripe Element will be inserted here. -->
-                        </div>
-                        <!-- Used to display form errors. -->
-                        <div id="card-errors" role="alert"></div>
-                        <button id="submit-button">Donate</button>
-                    </form>
+                
+                 <!-- Form Container -->
+                <div id="form-conta" class="form-container">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSenm-wTfXwAb09STt0BxYwhdHLGdlXoG9GZj1WwZ_bwPLgwTg/viewform?embedded=true" width="700" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
+              
             </div>
         </section>
     </main>

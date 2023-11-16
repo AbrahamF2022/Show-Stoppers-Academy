@@ -1,8 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <!-- ... Your existing head content ... -->
+      <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -12,12 +12,21 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+   <link href="css/styles.css" rel="stylesheet" />
+     <style>
+        #form-conta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column">
     <main class="flex-shrink-0">
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <!-- ... Your existing navigation content ... -->
+          <nav class="navbar navbar-expand-lg navbar-dark bg-black">
             <div class="container px-5">
                 <a class="navbar-brand" href="index.html">Show Stoppers Academy</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -32,74 +41,120 @@
                 </div>
             </div>
         </nav>
-        <!-- Pricing section -->
-        <section class="bg-white py-5">
-         <div class="bg-white rounded-3 py-5 px-4 px-md-5 mb-5">
-                    <div class="text-center mb-5">
-                      <!--  <div class="feature bg-primary bg-gradient text-black rounded-3 mb-3"><i class="bi bi-envelope"></i></div> -->
-                        <h1 class="fw-bolder text-black">Register Today!</h1>
-                        <!--<p class="lead fw-normal text-muted mb-0">We'd love to hear from you</p> -->
-                    </div>
-                    <div class="row gx-5 justify-content-center text-black">
-                        <div class="col-lg-8 col-xl-6">
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- * * SB Forms Contact Form * *-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- This form is pre-integrated with SB Forms.-->
-                            <!-- To make this form functional, sign up at-->
-                            <!-- https://startbootstrap.com/solution/contact-forms-->
-                            <!-- to get an API token!-->
-                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                <!-- Name input-->
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                    <label for="name">Full name</label>
-                                    <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                                </div>
-                                <!-- Email address input-->
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                    <label for="email">Email address</label>
-                                    <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                    <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                                </div>
-                                <!-- Phone number input-->
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                    <label for="phone">Phone number</label>
-                                    <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                                </div>
-                                <!-- Message input-->
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                    <label for="message">Message</label>
-                                    <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                                </div>
-                                <!-- Submit success message-->
-                                <!---->
-                                <!-- This is what your users will see when the form-->
-                                <!-- has successfully submitted-->
-                                <div class="d-none" id="submitSuccessMessage">
-                                    <div class="text-center mb-3">
-                                        <div class="fw-bolder">Form submission successful!</div>
-                                        To activate this form, sign up at
-                                        <br />
-                                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                    </div>
-                                </div>
-                                <!-- Submit error message-->
-                                <!---->
-                                <!-- This is what your users will see when there is-->
-                                <!-- an error submitting the form-->
-                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                                <!-- Submit Button-->
-                                <div class="d-grid"><button class="btn btn-danger btn-lg disabled text-black" id="submitButton" type="submit">Submit</button></div>
-                            </form>
-                        </div>
-                    </div>
+        <!-- Form Container -->
+        <div id="form-conta">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYWMmSrt0FWp5aN35vPcJfma3wHd2hyMaR-u5RhtjIaU_5kA/viewform?embedded=true" width="800" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+   
+    
+   
+
+     <!--   <div class="cont">
+            <!-- Form 1 -->
+         <!--   <form id="Form1">
+                <h3-hi>Create Account</h3-hi>
+                <input type="text" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+
+                <div class="btn-box1">
+                    <button type="button" id="Next1">Next</button>
                 </div>
-        </section>
-    </main>
+            </form>
+
+            <!-- Form 2 -->
+          <!--  <form id="Form2">
+                <h3-hi>Social Links</h3-hi>
+                <input type="text" placeholder="Medium" required>
+                <input type="text" placeholder="Github" required>
+                <input type="text" placeholder="LinkedIn" required>
+
+                <div class="btn-box1">
+                    <button type="button" id="Back1">Back</button>
+                    <button type="button" id="Next2">Next</button>
+                </div>
+            </form>
+
+            <!-- Form 3 -->
+          <!--  <form id="Form3">
+                <h3-hi>Personal Info</h3-hi>
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <input type="text" id="lastName" placeholder="Last Name" required>
+                <input type="text" id="mobileNo" placeholder="Mobile No." required>
+
+                <div class="btn-box1">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+            <div class="step-row">
+                <div id="progress"></div>
+                <div class="step-col"><small>Step</small></div>
+                <div class="step-col"><small>Step</small></div>
+                <div class="step-col"><small>Step</small></div>
+            </div>
+        </div>
+
+        <script>
+            var Form1 = document.getElementById("Form1");
+            var Form2 = document.getElementById("Form2");
+            var Form3 = document.getElementById("Form3");
+            var Next1 = document.getElementById("Next1");
+            var Next2 = document.getElementById("Next2");
+            var Back1 = document.getElementById("Back1");
+            var progress = document.getElementById("progress");
+
+            Next1.onclick = function () {
+                Form1.style.left = "-450px";
+                Form2.style.left = "40px";
+                progress.style.width = "240px";
+            };
+
+            Back1.onclick = function () {
+                Form1.style.left = "40px";
+                Form2.style.left = "450px";
+                progress.style.width = "120px";
+            };
+
+            Next2.onclick = function () {
+                Form2.style.left = "-450px";
+                Form3.style.left = "40px";
+                progress.style.width = "360px";
+            };
+
+            var Form3 = document.getElementById("Form3");
+
+            Form3.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                var firstName = document.getElementById("firstName").value;
+                var lastName = document.getElementById("lastName").value;
+                var mobileNo = document.getElementById("mobileNo").value;
+
+                var formData = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    mobileNo: mobileNo,
+                };
+
+                fetch('https://script.google.com/macros/s/AKfycbwortcvfSMailCzUkLTODOtoskF8SorBDHvR-SLL9zXhS09dvYL2eUoRl92XFCu6bZl/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log('Success:', data);
+                        // Optionally, you can redirect the user to a thank you page or perform other actions.
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            });
+        </script>
+
     <!-- Footer -->
     <footer class="bg-black py-4 mt-auto footer">
         <div class="container px-5">
@@ -118,8 +173,9 @@
         </div>
     </footer>
     <!-- Bootstrap core JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS -->
-    <script src="js/scripts.js"></script>
+   <script src="js/scripts.js"></script>
+    </main>
 </body>
 </html>

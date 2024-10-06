@@ -30,7 +30,7 @@
         }
     </style>
 </head>
-<body class="d-flex flex-column bg-black">
+<body class="d-flex flex-column bg-white">
     <main class="flex-shrink-0">
         <!-- Navigation -->
         <!-- ... Your existing navigation content ... -->
@@ -71,10 +71,37 @@
         </section>
 
         <!-- Form Container -->
-        <div id="form-conta">
-        <!--    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYWMmSrt0FWp5aN35vPcJfma3wHd2hyMaR-u5RhtjIaU_5kA/viewform?embedded=true" width="800" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> -->
-         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2kPQpv_3Mg0EMliKh4gdJc4XBLRXskbb7UHw-zcbbgLKa4w/viewform?embedded=true" width="800" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-        </div>
+     <div class="text-black">
+    <h2>Football Registration Form</h2>
+    <form action="process-form.php" method="post">
+        <label for="name">Player's Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="parentName">Parent/Guardian Name:</label><br>
+        <input type="text" id="parentName" name="parentName" required><br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="email">Email Address:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="team">Select Team:</label><br>
+        <select id="team" name="team">
+            <option value="peewee">Peewee (Ages 5-7)</option>
+            <option value="junior">Junior (Ages 8-10)</option>
+            <option value="senior">Senior (Ages 11-14)</option>
+        </select><br><br>
+
+        <label for="agreement">I agree to the terms and conditions:</label>
+        <input type="checkbox" id="agreement" name="agreement" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</div> 
 
     <!-- Footer -->
     <footer class="bg-black py-4 mt-auto footer">

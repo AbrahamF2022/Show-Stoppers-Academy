@@ -57,7 +57,20 @@
             color: white; /* Set text color to contrast with the background */
             padding: 100px 0; /* Adjust padding as needed */
         }
-    
+        img{
+            height: 700px;
+            width: 600px;
+          
+        }
+      .centered {
+
+    display: flex;
+    flex-wrap: wrap;            /* Allows wrapping to the next line */
+    justify-content: center;    /* Center the images horizontally */
+    align-items: center;        /* Aligns vertically within the rows */
+    gap: 10px;                  /* Adds space between the images */
+              /* Adds space between the images */
+}
     </style>
 <body class="d-flex flex-column bg-black">
     <main class="flex-shrink-0">
@@ -80,10 +93,10 @@
                              <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle fw-bolder" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    <li><a class="dropdown-item fw-bolder"  href="blog-home.html">Balling At Fordham</a></li> 
-                                    <li><a class="dropdown-item fw-bolder" href="blog-post.html">Spring Break Shootout</a></li>
-                                     <li><a class="dropdown-item fw-bolder" href="contact.html">Fundraising Gala Ticket Purchase</a></li>
-                                     <li><a class="dropdown-item fw-bolder" href="portfolio-overview.html">Fundraising Gala Donation</a></li>
+                                  <!--  <li><a class="dropdown-item fw-bolder"  href="blog-home.html">Balling At Fordham</a></li> -->
+                                      <li><a class="dropdown-item fw-bolder" href="blog-post.html">Rise And Grind Player Development</a></li> 
+                                    <!-- <li><a class="dropdown-item fw-bolder" href="contact.html">Fundraising Gala Ticket Purchase</a></li>c-->
+                                    <!-- <li><a class="dropdown-item fw-bolder" href="portfolio-overview.html">Fundraising Gala Donation</a></li> -->
                                 </ul>
                             </li> 
                     </ul>
@@ -157,6 +170,28 @@
 </script>
 
     <script src="script.js"></script> 
+          <section class="bg-silver py-5">
+            <div class="container px-5 my-5 text-center">
+                <h2 class="display-4 fw-bolder text-white mb-3" style="font-size: 50px;">Past Events</h2>
+            </div>
+        </section>   
+        <br><br>
+        <div class="centered">  <a href="Poster1.JPEG" data-lightbox="models" data-title="Caption1">
+             <img src="Poster1.JPEG">
+            </a>
+        
+          <a href="Poster2.JPEG" data-lightbox="models" data-title="Caption1">
+             <img src="Poster2.JPEG">
+            </a>
+        
+           <a href="Poster3.JPEG" data-lightbox="models" data-title="Caption1">
+             <img src="Poster3.JPEG">
+            </a>
+        
+           <a href="Poster4.jpg" data-lightbox="models" data-title="Caption1">
+             <img src="Poster4.jpg">
+            </a>
+        </div>
     </main>
     
     <!-- Footer -->

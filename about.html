@@ -16,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Custom CSS -->
+    <link href="css/dynamic-effects.css" rel="stylesheet">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -45,6 +48,9 @@
     
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Dynamic Effects -->
+    <script src="js/dynamic-effects.js" defer></script>
     
     <!-- Custom Styles -->
     <style>
@@ -115,13 +121,31 @@
       </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg min-h-[60vh] flex items-center relative">
+    <section class="hero-bg min-h-[60vh] flex items-center relative overflow-hidden">
+        <!-- Dynamic Animated Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/80 to-secondary-800/90"></div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-element absolute w-20 h-20 bg-gradient-to-r from-primary-500/30 to-primary-600/20 rounded-full blur-xl animate-float-1 morph-bg"></div>
+            <div class="floating-element absolute w-32 h-32 bg-gradient-to-r from-secondary-500/30 to-secondary-600/20 rounded-full blur-xl animate-float-2 morph-bg"></div>
+            <div class="floating-element absolute w-16 h-16 bg-gradient-to-r from-accent-500/30 to-accent-600/20 rounded-full blur-xl animate-float-3 morph-bg"></div>
+            <div class="floating-element absolute w-24 h-24 bg-gradient-to-r from-primary-400/30 to-primary-500/20 rounded-full blur-xl animate-float-4 morph-bg"></div>
+        </div>
+        
+        <!-- Particle System -->
+        <div class="absolute inset-0" id="particles-container"></div>
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6" data-animate="fade" data-delay="200">
-                About Show Stoppers Academy
+            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 animate-text-glow" data-animate="fade" data-delay="200">
+                <span class="bg-gradient-to-r from-white via-primary-200 to-secondary-200 bg-clip-text text-transparent animate-gradient-x">
+                    About Show Stoppers Academy
+                </span>
             </h1>
-            <p class="text-xl lg:text-2xl text-gray-100 max-w-3xl mx-auto" data-animate="fade" data-delay="300">
-                Empowering the next generation of leaders through sports, education, and community support.
+            <p class="text-xl lg:text-2xl text-gray-100 max-w-3xl mx-auto animate-fade-in-up" data-animate="fade" data-delay="300">
+                <span class="inline-block animate-typewriter">
+                    Empowering the next generation of leaders through sports, education, and community support.
+                </span>
             </p>
         </div>
     </section>
@@ -190,10 +214,8 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-stagger data-stagger-delay="100">
                 <!-- Value 1 -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden mb-6 shadow-lg">
+                        <img src="SSSA14.jpg" alt="Safety First" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Safety First</h3>
                     <p class="text-gray-600">We prioritize creating a safe, welcoming environment where every youth feels protected and valued.</p>
@@ -201,10 +223,8 @@
                 
                 <!-- Value 2 -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
-                        </svg>
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden mb-6 shadow-lg">
+                        <img src="SSSA15.jpg" alt="Community" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Community</h3>
                     <p class="text-gray-600">Building strong relationships and fostering a sense of belonging among all participants.</p>
@@ -212,10 +232,8 @@
                 
                 <!-- Value 3 -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
-                        </svg>
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden mb-6 shadow-lg">
+                        <img src="SSSA16.jpg" alt="Education" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Education</h3>
                     <p class="text-gray-600">Providing comprehensive learning opportunities including financial literacy and life skills.</p>
@@ -223,10 +241,8 @@
                 
                 <!-- Value 4 -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden mb-6 shadow-lg">
+                        <img src="SSSA17.jpg" alt="Excellence" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Excellence</h3>
                     <p class="text-gray-600">Striving for the highest standards in all our programs and interactions.</p>
@@ -234,10 +250,8 @@
                 
                 <!-- Value 5 -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden mb-6 shadow-lg">
+                        <img src="SSSA18.jpg" alt="Respect" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Respect</h3>
                     <p class="text-gray-600">Teaching and modeling respect for peers, elders, and the community.</p>
@@ -245,10 +259,8 @@
                 
                 <!-- Value 6 -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
-                        </svg>
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden mb-6 shadow-lg">
+                        <img src="SSSA19.jpg" alt="Love & Support" class="w-full h-full object-cover">
                     </div>
                     <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Compassion</h3>
                     <p class="text-gray-600">Showing empathy and understanding while helping youth navigate life's challenges.</p>

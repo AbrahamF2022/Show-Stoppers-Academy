@@ -121,7 +121,7 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
-                    </button>
+                </button>
                 </div>
             </div>
         </div>
@@ -137,10 +137,10 @@
                 <a href="/portfolio-item.html" class="block px-3 py-2 text-primary-600">Gallery</a>
                 <a href="/contact.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Contact</a>
                 <a href="/pricing.html" class="block px-3 py-2 bg-primary-600 text-white rounded-lg mx-3 text-center">Donate</a>
+                </div>
             </div>
-        </div>
-    </nav>
-
+        </nav>
+       
     <!-- Hero Section -->
     <section class="hero-bg min-h-[60vh] flex items-center relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -170,20 +170,10 @@
                             class="px-6 py-2 rounded-full font-medium transition-colors">
                         All Photos
                     </button>
-                    <button @click="activeFilter = 'programs'; filterGallery('programs')" 
-                            :class="activeFilter === 'programs' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'"
-                            class="px-6 py-2 rounded-full font-medium transition-colors">
-                        Programs
-                    </button>
                     <button @click="activeFilter = 'events'; filterGallery('events')" 
                             :class="activeFilter === 'events' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'"
                             class="px-6 py-2 rounded-full font-medium transition-colors">
                         Events
-                    </button>
-                    <button @click="activeFilter = 'community'; filterGallery('community')" 
-                            :class="activeFilter === 'community' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'"
-                            class="px-6 py-2 rounded-full font-medium transition-colors">
-                        Community
                     </button>
                 </div>
             </div>
@@ -200,7 +190,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" data-stagger data-stagger-delay="100">
                 <!-- Gallery Item 1 -->
-                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="programs" onclick="openLightbox('Poster1.JPEG', 'Basketball Training Session')">
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="events" onclick="openLightbox('Poster1.JPEG', 'Basketball Training Session')">
                     <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
                         <img src="Poster1.JPEG" alt="Basketball Training Session" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -226,7 +216,7 @@
                 </div>
                 
                 <!-- Gallery Item 3 -->
-                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="programs" onclick="openLightbox('Poster3.JPEG', 'Educational Workshop')">
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="events" onclick="openLightbox('Poster3.JPEG', 'Educational Workshop')">
                     <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
                         <img src="Poster3.JPEG" alt="Educational Workshop" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -239,7 +229,7 @@
                 </div>
                 
                 <!-- Gallery Item 4 -->
-                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="community" onclick="openLightbox('Poster4.jpg', 'Community Celebration')">
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="events" onclick="openLightbox('Poster4.jpg', 'Community Celebration')">
                     <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
                         <img src="Poster4.jpg" alt="Community Celebration" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -252,7 +242,7 @@
                 </div>
 
                 <!-- Additional Gallery Items -->
-                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="programs" onclick="openLightbox('SSSA1.jpg', 'Youth Development Program')">
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA1.jpg', 'Youth Development Program')">
                     <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
                         <img src="SSSA1.jpg" alt="Youth Development Program" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -264,7 +254,7 @@
                     </div>
                 </div>
 
-                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="events" onclick="openLightbox('SSSA2.jpg', 'Sports Tournament')">
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA2.jpg', 'Sports Tournament')">
                     <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
                         <img src="SSSA2.jpg" alt="Sports Tournament" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -276,7 +266,7 @@
                     </div>
                 </div>
 
-                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="community" onclick="openLightbox('SSSA3.jpg', 'Community Service')">
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA3.jpg', 'Community Service')">
                     <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
                         <img src="SSSA3.jpg" alt="Community Service" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -288,13 +278,399 @@
                     </div>
                 </div>
 
-                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="programs" onclick="openLightbox('SSSA4.jpg', 'Leadership Training')">
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA4.jpg', 'Leadership Training')">
                     <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
                         <img src="SSSA4.jpg" alt="Leadership Training" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="font-semibold text-lg mb-2">Leadership Training</h3>
                                 <p class="text-sm">Developing character and skills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional SSSA Photos -->
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA5.jpg', 'Youth Development')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA5.jpg" alt="Youth Development" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Development</h3>
+                                <p class="text-sm">Building tomorrow's leaders</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA6.jpg', 'Community Activities')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA6.jpg" alt="Community Activities" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Activities</h3>
+                                <p class="text-sm">Engaging our community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA7.jpg', 'Program Activities')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA7.jpg" alt="Program Activities" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Program Activities</h3>
+                                <p class="text-sm">Learning and growing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA8.jpg', 'Youth Engagement')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA8.jpg" alt="Youth Engagement" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Engagement</h3>
+                                <p class="text-sm">Active participation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA9.jpg', 'Community Building')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA9.jpg" alt="Community Building" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Building</h3>
+                                <p class="text-sm">Strengthening bonds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA10.jpg', 'Educational Programs')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA10.jpg" alt="Educational Programs" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Educational Programs</h3>
+                                <p class="text-sm">Academic excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA11.jpg', 'Youth Development')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA11.jpg" alt="Youth Development" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Development</h3>
+                                <p class="text-sm">Personal growth</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA12.jpg', 'Community Events')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA12.jpg" alt="Community Events" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Events</h3>
+                                <p class="text-sm">Celebrating together</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA13.jpg', 'Program Activities')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA13.jpg" alt="Program Activities" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Program Activities</h3>
+                                <p class="text-sm">Active learning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA14.jpg', 'Youth Engagement')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA14.jpg" alt="Youth Engagement" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Engagement</h3>
+                                <p class="text-sm">Building connections</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA15.jpg', 'Community Service')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA15.jpg" alt="Community Service" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Service</h3>
+                                <p class="text-sm">Giving back</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA16.jpg', 'Educational Workshops')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA16.jpg" alt="Educational Workshops" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Educational Workshops</h3>
+                                <p class="text-sm">Learning opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA17.jpg', 'Youth Development')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA17.jpg" alt="Youth Development" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Development</h3>
+                                <p class="text-sm">Character building</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA18.jpg', 'Community Building')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA18.jpg" alt="Community Building" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Building</h3>
+                                <p class="text-sm">Strengthening community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA19.jpg', 'Program Activities')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA19.jpg" alt="Program Activities" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Program Activities</h3>
+                                <p class="text-sm">Active participation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA20.jpg', 'Youth Engagement')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA20.jpg" alt="Youth Engagement" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Engagement</h3>
+                                <p class="text-sm">Building connections</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA21.jpg', 'Community Events')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA21.jpg" alt="Community Events" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Events</h3>
+                                <p class="text-sm">Celebrating achievements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA22.jpg', 'Educational Programs')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA22.jpg" alt="Educational Programs" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Educational Programs</h3>
+                                <p class="text-sm">Academic support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA23.jpg', 'Youth Development')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA23.jpg" alt="Youth Development" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Development</h3>
+                                <p class="text-sm">Personal growth</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA24.jpg', 'Community Service')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA24.jpg" alt="Community Service" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Service</h3>
+                                <p class="text-sm">Making a difference</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA25.jpg', 'Program Activities')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA25.jpg" alt="Program Activities" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Program Activities</h3>
+                                <p class="text-sm">Learning and growing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA26.jpg', 'Youth Engagement')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA26.jpg" alt="Youth Engagement" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Engagement</h3>
+                                <p class="text-sm">Active participation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA27.jpg', 'Community Building')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA27.jpg" alt="Community Building" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Building</h3>
+                                <p class="text-sm">Strengthening bonds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA28.jpg', 'Educational Workshops')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA28.jpg" alt="Educational Workshops" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Educational Workshops</h3>
+                                <p class="text-sm">Learning opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA29.jpg', 'Youth Development')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA29.jpg" alt="Youth Development" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Development</h3>
+                                <p class="text-sm">Building tomorrow's leaders</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSSA30.jpg', 'Community Events')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA30.jpg" alt="Community Events" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Events</h3>
+                                <p class="text-sm">Celebrating our community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SSA Photos -->
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSA1.jpg', 'Academy Activities')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSA1.jpg" alt="Academy Activities" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Academy Activities</h3>
+                                <p class="text-sm">Program highlights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSA2.jpg', 'Youth Programs')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSA2.jpg" alt="Youth Programs" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Programs</h3>
+                                <p class="text-sm">Engaging activities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSA3.jpg', 'Community Engagement')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSA3.jpg" alt="Community Engagement" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Engagement</h3>
+                                <p class="text-sm">Building connections</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSA4.jpg', 'Program Development')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSA4.jpg" alt="Program Development" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Program Development</h3>
+                                <p class="text-sm">Growing our programs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSA5 (1) (1).jpg', 'Academy Activities')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSA5 (1) (1).jpg" alt="Academy Activities" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Academy Activities</h3>
+                                <p class="text-sm">Program highlights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="photos" onclick="openLightbox('SSA6.jpg', 'Youth Development')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSA6.jpg" alt="Youth Development" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Development</h3>
+                                <p class="text-sm">Building character</p>
                             </div>
                         </div>
                     </div>
@@ -368,8 +744,8 @@
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/></svg>
                         </a>
-                    </div>
-                </div>
+       </div>
+        </div>
                 
                 <!-- Quick Links -->
                 <div>
@@ -452,8 +828,20 @@
         function filterGallery(category) {
             const items = document.querySelectorAll('[data-category]');
             items.forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
-                    item.style.display = 'block';
+                if (category === 'all') {
+                    // Show both photos and events in "All Photos"
+                    if (item.dataset.category === 'photos' || item.dataset.category === 'events') {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                } else if (category === 'events') {
+                    // Show only events
+                    if (item.dataset.category === 'events') {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
                 } else {
                     item.style.display = 'none';
                 }
@@ -492,5 +880,5 @@
 
         console.log('Gallery page loaded successfully! 🚀');
     </script>
-</body>
+    </body>
 </html>

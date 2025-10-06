@@ -1,0 +1,44 @@
+{
+  "name": "show-stoppers-academy",
+  "version": "2.0.0",
+  "description": "Modern website for Show-Stoppers Academy - Empowering youth through sports and education",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "youth development",
+    "sports academy",
+    "education",
+    "community",
+    "typescript",
+    "tailwindcss"
+  ],
+  "author": "Show-Stoppers Academy",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "@vitejs/plugin-legacy": "^5.2.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.54.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.17.0"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "alpinejs": "^3.13.3",
+    "framer-motion": "^10.16.5",
+    "gsap": "^3.12.2",
+    "swiper": "^11.0.5"
+  }
+}

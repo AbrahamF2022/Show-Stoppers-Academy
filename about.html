@@ -1,138 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Show Stoppers Academy</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Show-Stoppers Academy's mission, values, and commitment to empowering youth through sports and education in our community.">
+    <meta name="keywords" content="about us, youth development, community organization, sports academy, education, leadership">
+    
+    <title>About Us - Show-Stoppers Academy</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5',
+                            400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c',
+                            800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a'
+                        },
+                        secondary: {
+                            50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
+                            400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309',
+                            800: '#92400e', 900: '#78350f', 950: '#451a03'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Poppins', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Custom Styles -->
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #333;
-      }
-
-      section {
-        background-image: url('red-shades-1418760164pPT.jpg');
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        color: white;
-        padding: 100px 0;
-      }
-
-      .mission-container {
-        background-color: rgba(0, 0, 0, 0.7); /* Dark background for better text contrast */
-        padding: 30px;
-        border-radius: 15px;
-      }
-
-      img {
-        border-radius: 15px;
-      }
-
-      @media (max-width: 992px) {
-        .text-column,
-        .image-column {
-          text-align: center;
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.9), rgba(185, 28, 28, 0.9)), url('red-shades-1418760164pPT.jpg');
+            background-size: cover;
+            background-position: center;
         }
-
-        .text-column {
-          margin-top: 20px;
-        }
+        .text-gradient {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
       }
     </style>
   </head>
-
-  <body class="d-flex flex-column bg-black">
-    <main class="flex-shrink-0">
-      <!-- Navigation-->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-        <div class="container px-5">
-          <a class="navbar-brand fw-bolder" href="index.html">Show Stoppers Academy</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<body class="font-sans text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" x-data="{ mobileMenuOpen: false, scrolled: false }" x-init="
+        window.addEventListener('scroll', () => {
+            scrolled = window.scrollY > 100;
+        });
+    " :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/index.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display font-bold text-xl text-gray-900">Show-Stoppers Academy</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="/index.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="/about.html" class="nav-link text-primary-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <a href="/index.html#programs" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Programs</a>
+                        <a href="/index.html#gallery" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Gallery</a>
+                        <a href="/contact.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                        <a href="/pricing.html" class="bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-700 transition-colors">Donate</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item fw-bolder"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item fw-bolder"><a class="nav-link" href="about.html">About Us</a></li>
-              <li class="nav-item fw-bolder"><a class="nav-link" href="pricing.html">Donate</a></li>
-              <li class="nav-item fw-bolder"><a class="nav-link" href="faq.html">Events</a></li>
-              <li class="nav-item fw-bolder"><a class="nav-link" href="portfolio-item.html">Gallery</a></li>
-               <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle fw-bolder" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                  <!--  <li><a class="dropdown-item fw-bolder"  href="blog-home.html">Balling At Fordham</a></li> -->
-                                      <li><a class="dropdown-item fw-bolder" href="blog-post.html">Rise And Grind Player Development</a></li> 
-                                    <!-- <li><a class="dropdown-item fw-bolder" href="contact.html">Fundraising Gala Ticket Purchase</a></li>c-->
-                                     <li><a class="dropdown-item fw-bolder" href="portfolio-overview.html">Holiday Showcase</a></li> 
-                                </ul>
-                            </li> 
-            </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/index.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Home</a>
+                <a href="/about.html" class="block px-3 py-2 text-primary-600">About</a>
+                <a href="/index.html#programs" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Programs</a>
+                <a href="/index.html#gallery" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Gallery</a>
+                <a href="/contact.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Contact</a>
+                <a href="/pricing.html" class="block px-3 py-2 bg-primary-600 text-white rounded-lg mx-3 text-center">Donate</a>
           </div>
         </div>
       </nav>
 
-      <!-- Header-->
-      <section class="bg-silver py-5">
-        <div class="container px-5 my-5 text-center">
-          <h2 class="display-4 fw-bolder text-white mb-3" style="font-size: 60px;">Our Mission</h2>
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-[60vh] flex items-center relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6" data-animate="fade" data-delay="200">
+                About Show-Stoppers Academy
+            </h1>
+            <p class="text-xl lg:text-2xl text-gray-100 max-w-3xl mx-auto" data-animate="fade" data-delay="300">
+                Empowering the next generation of leaders through sports, education, and community support.
+            </p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-animate="fade" data-delay="200">
+                    <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-6">Our Story</h2>
+                    <div class="space-y-6 text-lg text-gray-600">
+                        <p>Founded with a vision to create positive change in our community, Show-Stoppers Academy has been a beacon of hope and opportunity for young people.</p>
+                        <p>In a world where social acceptance often supersedes humanity, we recognized the need for a safe space where youth could develop into productive, confident individuals. Our organization was born from the belief that every young person deserves the opportunity to grow, learn, and succeed.</p>
+                        <p>Through sports and education, we provide our youth with the tools they need to build confidence, develop character, and create lasting relationships with their peers and mentors.</p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="/contact.html" class="bg-primary-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+                <div data-animate="fade" data-delay="400">
+                    <img src="PIC.png" alt="Show-Stoppers Academy Logo" 
+                         class="rounded-3xl shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement Section -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-3xl p-8 lg:p-12" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-6">Our Mission</h2>
+                <blockquote class="text-xl lg:text-2xl text-gray-700 italic leading-relaxed">
+                    "Show-Stoppers Academy provides a <span class="text-primary-600 font-semibold">Safe Haven</span> for our youth's future leaders. We create a place where young people from all walks of life can build confidence, strength, and camaraderie through sports and education."
+                </blockquote>
+                <div class="mt-8">
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div class="p-4">
+                            <div class="text-3xl font-bold text-primary-600 mb-2">500+</div>
+                            <div class="text-gray-600">Youth Served</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-3xl font-bold text-primary-600 mb-2">15+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-3xl font-bold text-primary-600 mb-2">95%</div>
+                            <div class="text-gray-600">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
       </section>
 
-      <header class="py-5">
-        <div class="container">
-          <div class="row align-items-center justify-content-center mission-container">
-            <!-- Image Column -->
-            <div class="col-lg-6 col-md-12 image-column">
-              <img src="SSAMISSION.png" alt="Show Stoppers Academy" style="max-width: 100%; height: auto;" />
+    <!-- Values Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Our Core Values</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">The principles that guide everything we do at Show-Stoppers Academy.</p>
             </div>
 
-            <!-- Text Column -->
-            <div class="col-lg-6 col-md-12 text-column text-white">
-              <p class="lead mb-4" style="font-size: 24px;">
-                Show Stoppers Academy (“SSA”) is a community-based group that will provide a “Safe Haven” for our youth's future leaders. A place where the youth from all walks of life can build confidence, strength, and camaraderie through sports and education.
-              </p>
-              <p class="lead mb-4" style="font-size: 24px;">
-                We currently live in a day and age where social acceptance supersedes humanity. At SSA, we provide our children with a safe space to be themselves, encourage them to have respect for their peers and elders, and create a space to develop into productive individuals.
-              </p>
-              <p class="lead mb-4" style="font-size: 24px;">
-                This is all accomplished through education in financial literacy, health and wellness, and various travel opportunities through sports.
-              </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-stagger data-stagger-delay="100">
+                <!-- Value 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Safety First</h3>
+                    <p class="text-gray-600">We prioritize creating a safe, welcoming environment where every youth feels protected and valued.</p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Community</h3>
+                    <p class="text-gray-600">Building strong relationships and fostering a sense of belonging among all participants.</p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Education</h3>
+                    <p class="text-gray-600">Providing comprehensive learning opportunities including financial literacy and life skills.</p>
+                </div>
+                
+                <!-- Value 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Excellence</h3>
+                    <p class="text-gray-600">Striving for the highest standards in all our programs and interactions.</p>
+                </div>
+                
+                <!-- Value 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Respect</h3>
+                    <p class="text-gray-600">Teaching and modeling respect for peers, elders, and the community.</p>
+                </div>
+                
+                <!-- Value 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-stagger-item data-animate="fade">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Compassion</h3>
+                    <p class="text-gray-600">Showing empathy and understanding while helping youth navigate life's challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Our Journey</h2>
+                <p class="text-xl text-gray-600">Key milestones in our organization's growth and impact.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-primary-200 hidden lg:block"></div>
+                
+                <div class="space-y-12" data-stagger data-stagger-delay="200">
+                    <!-- Timeline Item 1 -->
+                    <div class="relative flex items-center" data-stagger-item data-animate="fade">
+                        <div class="lg:w-1/2 lg:pr-8">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="inline-block bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">2008</div>
+                                <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Foundation</h3>
+                                <p class="text-gray-600">Show-Stoppers Academy was founded with the vision of creating a safe haven for youth in our community.</p>
+                            </div>
+                        </div>
+                        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:w-1/2 lg:pl-8"></div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="relative flex items-center" data-stagger-item data-animate="fade">
+                        <div class="lg:w-1/2 lg:pr-8"></div>
+                        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:w-1/2 lg:pl-8">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="inline-block bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">2010</div>
+                                <h3 class="font-display font-bold text-xl text-gray-900 mb-2">First Programs</h3>
+                                <p class="text-gray-600">Launched our first basketball development programs and educational workshops.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="relative flex items-center" data-stagger-item data-animate="fade">
+                        <div class="lg:w-1/2 lg:pr-8">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="inline-block bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">2015</div>
+                                <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Community Expansion</h3>
+                                <p class="text-gray-600">Expanded our reach to serve over 200 youth annually with comprehensive development programs.</p>
+                            </div>
+                        </div>
+                        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:w-1/2 lg:pl-8"></div>
+                    </div>
+                    
+                    <!-- Timeline Item 4 -->
+                    <div class="relative flex items-center" data-stagger-item data-animate="fade">
+                        <div class="lg:w-1/2 lg:pr-8"></div>
+                        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:w-1/2 lg:pl-8">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="inline-block bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">2018</div>
+                                <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Educational Focus</h3>
+                                <p class="text-gray-600">Introduced financial literacy and health & wellness programs to our curriculum.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 5 -->
+                    <div class="relative flex items-center" data-stagger-item data-animate="fade">
+                        <div class="lg:w-1/2 lg:pr-8">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="inline-block bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">2020</div>
+                                <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Adaptation & Growth</h3>
+                                <p class="text-gray-600">Successfully adapted our programs to virtual platforms during challenging times.</p>
+                            </div>
+                        </div>
+                        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:w-1/2 lg:pl-8"></div>
+                    </div>
+                    
+                    <!-- Timeline Item 6 -->
+                    <div class="relative flex items-center" data-stagger-item data-animate="fade">
+                        <div class="lg:w-1/2 lg:pr-8"></div>
+                        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:w-1/2 lg:pl-8">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="inline-block bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">2024</div>
+                                <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Looking Forward</h3>
+                                <p class="text-gray-600">Continuing to innovate and expand our impact with new programs and community partnerships.</p>
+                            </div>
+                        </div>
+                    </div>
             </div>
           </div>
         </div>
-      </header>
-    </main>
+    </section>
 
-    <!-- Footer-->
-    <footer class="bg-black py-4 mt-auto">
-      <div class="container px-5">
-        <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-          <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Show Stoppers Academy</div></div>
-          <div class="col-auto">
-            <a class="link-light small" href="#!">Privacy</a>
-            <span class="text-white mx-1">&middot;</span>
-            <a class="link-light small" href="#!">Terms</a>
-            <span class="text-white mx-1">&middot;</span>
-            <a class="link-light small" href="#!">Contact</a>
+    <!-- Team Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Meet Our Team</h2>
+                <p class="text-xl text-gray-600">The dedicated professionals who make our mission possible.</p>
+            </div>
+
+            <!-- Team Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 - Placeholder -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="300">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
+                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 - Placeholder -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="400">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-secondary-400 to-accent-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
+                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 - Placeholder -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="500">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-accent-400 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
+                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 - Placeholder -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="600">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-primary-500 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
+                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 5 - Placeholder -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="700">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-secondary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
+                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 6 - Placeholder -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="800">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-accent-500 to-secondary-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
+                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action for Team -->
+            <div class="text-center mt-12" data-animate="fade" data-delay="900">
+                <div class="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-8 text-white">
+                    <h3 class="font-display font-bold text-2xl mb-4">Join Our Team</h3>
+                    <p class="text-lg mb-6 text-gray-100">We're always looking for passionate individuals who want to make a difference in the lives of young people.</p>
+                    <a href="/contact.html" class="inline-flex items-center bg-white text-primary-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+                        </svg>
+                        Contact Us About Opportunities
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display font-bold text-3xl lg:text-4xl mb-6" data-animate="fade" data-delay="200">Join Our Mission</h2>
+            <p class="text-xl mb-8 text-gray-100" data-animate="fade" data-delay="300">Be part of the change. Support youth development and community building.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-animate="fade" data-delay="400">
+                <a href="/pricing.html" class="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    Support Our Mission
+                </a>
+                <a href="/blog-post.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-colors">
+                    Join Our Programs
+                </a>
           </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display font-bold text-xl">Show-Stoppers Academy</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering youth for a brighter tomorrow through sports and education.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="/index.html#programs" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
+                        <li><a href="/index.html#gallery" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Programs -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Programs</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/blog-post.html" class="text-gray-400 hover:text-white transition-colors">Rise & Grind Development</a></li>
+                        <li><a href="/portfolio-overview.html" class="text-gray-400 hover:text-white transition-colors">Holiday Showcase</a></li>
+                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Educational Workshops</a></li>
+                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Community Events</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Get Involved -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Get Involved</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/pricing.html" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Volunteer</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Sponsor</a></li>
+                        <li><a href="/blog-post.html" class="text-gray-400 hover:text-white transition-colors">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Show-Stoppers Academy. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-primary-600 text-white p-3 rounded-full shadow-lg hover:bg-primary-700 transition-all duration-300 opacity-0 invisible">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <!-- TypeScript Components -->
+    <script type="module">
+        import { Navigation } from './src/components/Navigation.js';
+        import { AnimationController, CounterAnimation } from './src/components/Animations.js';
+        import { debounce, throttle, scrollToElement } from './src/utils/index.js';
+
+        // Initialize components
+        const navigation = new Navigation();
+        const animations = new AnimationController();
+        const counters = new CounterAnimation();
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        const handleScroll = throttle(() => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        }, 100);
+
+        window.addEventListener('scroll', handleScroll);
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        console.log('About page loaded successfully! 🚀');
+    </script>
   </body>
 </html>

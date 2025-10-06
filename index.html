@@ -1,285 +1,745 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Show Stoppers Academy</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Show-Stoppers Academy - Empowering youth for a brighter tomorrow through sports and education. Learn about our mission, values, and impact in the community.">
+    <meta name="keywords" content="Show-Stoppers Academy, youth development, sports academy, community programs, education, leadership">
+    
+    <title>Show-Stoppers Academy - Empowering Youth Through Sports & Education</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5',
+                            400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c',
+                            800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a'
+                        },
+                        secondary: {
+                            50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74',
+                            400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c',
+                            800: '#9a3412', 900: '#7c2d12', 950: '#431407'
+                        },
+                        accent: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a', 950: '#020617'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Poppins', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Custom Styles -->
     <style>
-        /* Add the background image property */
-        header {
-            background-image: url('2768032.jpg');
-            background-size: cover; /* Adjust to your needs */
-            background-position: center center;
-            background-repeat: no-repeat;
-            color: white; /* Set text color to contrast with the background */
-            padding: 100px 0; /* Adjust padding as needed */
+        .hero-bg {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
         }
-
-        .header-container {
-            display: flex;
-            flex-direction: column; /* Stack elements vertically on smaller screens */
-            text-align: center; /* Center text on small screens */
+        .text-gradient {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .header-text {
-            text-align: center; /* Center text on small screens */
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
         }
-
-        .header-text h1 {
-            font-size: 3rem; /* Adjust the font size as needed for mobile view */
-        }
-
-        .header-image {
-            text-align: center; /* Center the image on small screens */
-        }
-
-        @media (min-width: 768px) {
-            .header-container {
-                flex-direction: row; /* Display elements side by side on wider screens */
-                align-items: center; /* Vertically align items in the container */
-                text-align: left; /* Align text to the left on wider screens */
-                padding: 0;
-            }
-
-            .header-text {
-                flex: 1; /* Expand to fill half of the container's width */
-                text-align: left; /* Align text to the left on wider screens */
-                margin-right: 20px; /* Add some spacing between text and image */
-            }
-
-            .header-image {
-                flex: 1; /* Expand to fill half of the container's width */
-                text-align: right; /* Align image to the right on wider screens */
-            }
-
-            .header-text h1 {
-                font-size: 3.5rem; /* Adjust the font size as needed for wider screens */
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
     </style>
 </head>
-<body class="d-flex flex-column h-100">
-    <main class="flex-shrink-0">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-            <div class="container px-5">
-                <a class="navbar-brand fw-bolder" href="index.html">Show Stoppers Academy</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+<body class="font-sans text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" x-data="{ mobileMenuOpen: false, scrolled: false }" x-init="
+        window.addEventListener('scroll', () => {
+            scrolled = window.scrollY > 100;
+        });
+    " :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/index.html" class="flex items-center space-x-3">
+                        <img src="PIC.png" alt="Show-Stoppers Academy Logo" class="w-10 h-10 rounded-full object-cover shadow-lg">
+                        <span class="font-display font-bold text-xl text-gray-900">Show-Stoppers Academy</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="/index.html" class="nav-link text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="/about.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <a href="/programs.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Programs</a>
+                        <a href="/portfolio-item.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Gallery</a>
+                        <a href="/contact.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                        <a href="/pricing.html" class="bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-700 transition-colors">Donate</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item fw-bolder"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item fw-bolder"><a class="nav-link" href="about.html">About Us</a></li> 
-                        <li class="nav-item fw-bolder"><a class="nav-link" href="pricing.html">Donate</a></li>
-                        <li class="nav-item fw-bolder"><a class="nav-link" href="faq.html">Events</a></li> 
-                          <li class="nav-item fw-bolder"><a class="nav-link" href="portfolio-item.html">Gallery</a></li> 
-                        <!-- <li class="nav-item fw-bolder"><a class="nav-link" href="contact.html">Register</a></li> -->
-                       
-                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle fw-bolder" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                  <!--  <li><a class="dropdown-item fw-bolder"  href="blog-home.html">Balling At Fordham</a></li> -->
-                                      <li><a class="dropdown-item fw-bolder" href="blog-post.html">Rise And Grind Player Development</a></li> 
-                                    <!-- <li><a class="dropdown-item fw-bolder" href="contact.html">Fundraising Gala Ticket Purchase</a></li>c-->
-                                     <li><a class="dropdown-item fw-bolder" href="portfolio-overview.html">Holiday Showcase</a></li> 
-                                </ul>
-                            </li> 
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/index.html" class="block px-3 py-2 text-primary-600">Home</a>
+                <a href="/about.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">About</a>
+                <a href="/programs.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Programs</a>
+                <a href="/portfolio-item.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Gallery</a>
+                <a href="/contact.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Contact</a>
+                <a href="/pricing.html" class="block px-3 py-2 bg-primary-600 text-white rounded-lg mx-3 text-center">Donate</a>
+                            </div>
+                        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <!-- Logo Section -->
+            <div class="animate-float mb-12">
+                <div class="relative inline-block">
+                    <!-- Logo Background Circle -->
+                    <div class="w-40 h-40 mx-auto bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl border-4 border-white/30">
+                        <img src="PIC.png" alt="Show-Stoppers Academy Logo" class="w-32 h-32 rounded-full object-cover">
+                    </div>
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -right-4 w-8 h-8 bg-secondary-400 rounded-full animate-pulse"></div>
+                    <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-primary-300 rounded-full animate-pulse delay-1000"></div>
+                </div>
+                    </div>
+            
+            <!-- Mission Statement -->
+            <div class="mb-12" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-2xl lg:text-3xl text-secondary-200 mb-4 tracking-wide">
+                    SHOW-STOPPERS ACADEMY MISSION
+                </h2>
+                <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-7xl text-white mb-8 leading-tight">
+                    Show-Stoppers Academy
+                </h1>
+                <p class="text-xl lg:text-3xl text-gray-100 max-w-4xl mx-auto mb-8 leading-relaxed">
+                    Empowering youth for a brighter tomorrow through sports and education
+                </p>
+                
+                <!-- 501(c)(3) Badge -->
+                <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white font-semibold mb-8">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    501(c)(3) Charitable Corporation
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center" data-animate="fade" data-delay="400">
+                <a href="/programs.html" class="group bg-white text-primary-600 px-10 py-5 rounded-full font-bold hover:bg-gray-100 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                    <span class="flex items-center justify-center">
+                        Explore Programs
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </span>
+                </a>
+                <a href="/contact.html" class="group border-2 border-white text-white px-10 py-5 rounded-full font-bold hover:bg-white hover:text-primary-600 transition-all duration-300 text-lg backdrop-blur-sm hover:shadow-xl transform hover:-translate-y-1">
+                    <span class="flex items-center justify-center">
+                        Get Involved
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.1\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"></div>
+                                </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+                                </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-5xl text-gray-900 mb-6">Our Mission</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Building character, developing skills, and creating opportunities for youth in our community.</p>
+                                </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div data-animate="fade" data-delay="300">
+                    <div class="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-3xl p-8 lg:p-12">
+                        <h3 class="font-display font-bold text-2xl text-gray-900 mb-6">Empowering Through Sports</h3>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            We believe that sports provide more than just physical activity - they teach discipline, teamwork, 
+                            leadership, and perseverance. Our programs combine athletic training with character development 
+                            to help young people become confident, capable individuals.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                </svg>
+                                </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Vision-Driven</h4>
+                                <p class="text-gray-600">Creating tomorrow's leaders today</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-animate="fade" data-delay="400">
+                    <div class="bg-gradient-to-br from-secondary-50 to-accent-50 rounded-3xl p-8 lg:p-12">
+                        <h3 class="font-display font-bold text-2xl text-gray-900 mb-6">Educational Excellence</h3>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            Education is the foundation of success. Our programs integrate academic support, 
+                            life skills training, and mentorship to ensure our youth are prepared for college, 
+                            careers, and life beyond the court.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-secondary-600 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.482 0l5.5-2.357a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                                </svg>
+                                    </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Holistic Development</h4>
+                                <p class="text-gray-600">Mind, body, and character</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-accent-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-5xl text-gray-900 mb-6">Our Core Values</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">The principles that guide everything we do.</p>
+                        </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Value 1 -->
+                <div class="text-center" data-animate="fade" data-delay="300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Excellence</h3>
+                    <p class="text-gray-600">We strive for the highest standards in everything we do, inspiring our youth to reach their full potential.</p>
+                                </div>
+                
+                <!-- Value 2 -->
+                <div class="text-center" data-animate="fade" data-delay="400">
+                    <div class="w-20 h-20 bg-gradient-to-br from-secondary-500 to-secondary-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                                            </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Community</h3>
+                    <p class="text-gray-600">We build strong relationships and support systems that extend beyond the court into our neighborhoods.</p>
+                                        </div>
+                
+                <!-- Value 3 -->
+                <div class="text-center" data-animate="fade" data-delay="500">
+                    <div class="w-20 h-20 bg-gradient-to-br from-accent-500 to-accent-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Integrity</h3>
+                    <p class="text-gray-600">We lead by example, teaching our youth the importance of honesty, respect, and doing what's right.</p>
+                                </div>
+                
+                <!-- Value 4 -->
+                <div class="text-center" data-animate="fade" data-delay="600">
+                    <div class="w-20 h-20 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                            </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Growth</h3>
+                    <p class="text-gray-600">We believe in continuous improvement and provide opportunities for personal and athletic development.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+    </section>
+
+    <!-- Additional Services Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-accent-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-5xl text-gray-900 mb-6">Comprehensive Support Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Beyond sports, we provide essential services that support the whole child's development and success.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tutoring Services -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.482 0l5.5-2.357a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Academic Tutoring</h3>
+                    <p class="text-gray-600 mb-6">One-on-one and group tutoring sessions to help students excel in their academic studies.</p>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li>• Math and Science support</li>
+                        <li>• Reading and writing assistance</li>
+                        <li>• Test preparation</li>
+                        <li>• Homework help</li>
+                    </ul>
+                    <a href="/tutoring-login.html" class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+                        Tutor Login
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Financial Literacy -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="400">
+                    <div class="w-16 h-16 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Financial Literacy</h3>
+                    <p class="text-gray-600 mb-6">Teaching youth essential money management skills for a secure financial future.</p>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li>• Budgeting and saving</li>
+                        <li>• Understanding credit</li>
+                        <li>• Investment basics</li>
+                        <li>• College planning</li>
+                    </ul>
+                    <a href="/contact.html" class="inline-flex items-center text-secondary-600 font-semibold hover:text-secondary-700 transition-colors">
+                        Learn More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Health & Wellness -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="500">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent-400 to-accent-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Health & Wellness</h3>
+                    <p class="text-gray-600 mb-6">Promoting physical and mental health through comprehensive wellness programs.</p>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li>• Nutrition education</li>
+                        <li>• Mental health awareness</li>
+                        <li>• Stress management</li>
+                        <li>• Fitness programs</li>
+                    </ul>
+                    <a href="/contact.html" class="inline-flex items-center text-accent-600 font-semibold hover:text-accent-700 transition-colors">
+                        Learn More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Therapy Services -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="600">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-gray-900 mb-4">Physical & Mental Therapy</h3>
+                    <p class="text-gray-600 mb-6">Professional therapy services to support physical recovery and mental well-being.</p>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li>• Physical therapy</li>
+                        <li>• Mental health counseling</li>
+                        <li>• Sports injury recovery</li>
+                        <li>• Family therapy</li>
+                    </ul>
+                    <a href="/contact.html" class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+                        Learn More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student of the Month Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-5xl text-gray-900 mb-6">Student of the Month</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Recognizing outstanding students who exemplify our values and demonstrate exceptional growth.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-3xl p-8 lg:p-12 shadow-xl" data-animate="fade" data-delay="300">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="w-32 h-32 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-8">
+                                <span class="text-white font-bold text-4xl">JS</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-display font-bold text-3xl text-gray-900 mb-4">January 2024</h3>
+                            <h4 class="text-2xl font-semibold text-gray-800 mb-6">Jordan Smith</h4>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                "Jordan has shown exceptional dedication to both his studies and basketball training. His leadership on and off the court has inspired his teammates, and his commitment to academic excellence sets a wonderful example for all our students."
+                            </p>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">Coach Rodriguez</h5>
+                                    <p class="text-gray-600">Head Coach, Rise & Grind Program</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-accent-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-5xl text-gray-900 mb-6">Our Impact</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Making a real difference in the lives of young people and our community.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Stat 1 -->
+                <div class="text-center" data-animate="fade" data-delay="300">
+                    <div class="text-5xl lg:text-6xl font-bold text-primary-600 mb-4" data-counter="500">0</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Youth Served</h3>
+                    <p class="text-gray-600">Young people who have participated in our programs</p>
+                            </div>
+                
+                <!-- Stat 2 -->
+                <div class="text-center" data-animate="fade" data-delay="400">
+                    <div class="text-5xl lg:text-6xl font-bold text-secondary-600 mb-4" data-counter="95">0</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Success Rate</h3>
+                    <p class="text-gray-600">Percentage of participants who graduate high school</p>
+                                </div>
+                
+                <!-- Stat 3 -->
+                <div class="text-center" data-animate="fade" data-delay="500">
+                    <div class="text-5xl lg:text-6xl font-bold text-accent-600 mb-4" data-counter="10000">0</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Hours of Service</h3>
+                    <p class="text-gray-600">Community service hours completed by our youth</p>
+                                            </div>
+                                        </div>
+            
+            <div class="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl p-8 lg:p-12 text-white text-center" data-animate="fade" data-delay="600">
+                <h3 class="font-display font-bold text-2xl lg:text-3xl mb-6">Join Our Mission</h3>
+                <p class="text-xl mb-8 text-gray-100 max-w-3xl mx-auto">
+                    Be part of something bigger. Help us continue empowering youth and building stronger communities.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/programs.html" class="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        Explore Programs
+                    </a>
+                    <a href="/pricing.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-colors">
+                        Support Our Mission
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidelines & Handbook Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-5xl text-gray-900 mb-6">Guidelines & Commitment</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Access our comprehensive handbook and guidelines to understand our programs, policies, and commitments.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-animate="fade" data-delay="300">
+                    <div class="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-3xl p-8 lg:p-12">
+                        <h3 class="font-display font-bold text-2xl text-gray-900 mb-6">Program Guidelines</h3>
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            Our comprehensive handbook outlines expectations, policies, and commitments for students, families, and staff. This ensures a safe, supportive, and productive environment for everyone involved.
+                        </p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mt-1">
+                                    <svg class="w-3 h-3 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Student Expectations</h4>
+                                    <p class="text-gray-600 text-sm">Academic performance, attendance, and behavior standards</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mt-1">
+                                    <svg class="w-3 h-3 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Safety Policies</h4>
+                                    <p class="text-gray-600 text-sm">Comprehensive safety guidelines and procedures</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mt-1">
+                                    <svg class="w-3 h-3 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Parent/Family Commitments</h4>
+                                    <p class="text-gray-600 text-sm">Support expectations and communication protocols</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="/guidelines-handbook.html" class="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            Download Handbook
+                        </a>
+                    </div>
+                </div>
+                
+                <div data-animate="fade" data-delay="400">
+                    <div class="bg-gradient-to-br from-secondary-50 to-accent-50 rounded-3xl p-8 lg:p-12">
+                        <h3 class="font-display font-bold text-2xl text-gray-900 mb-6">Quick Access</h3>
+                        <p class="text-gray-600 mb-8">Access important documents and resources quickly and easily.</p>
+                        
+                        <div class="space-y-4">
+                            <a href="/guidelines-handbook.html" class="block bg-white rounded-xl p-4 hover:shadow-lg transition-all duration-300 border-l-4 border-primary-500">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"/>
+                                                <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">Guidelines & Commitment Handbook</h4>
+                                            <p class="text-gray-600 text-sm">Complete program guidelines and policies</p>
+                                        </div>
+                                    </div>
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                            <a href="/tutoring-login.html" class="block bg-white rounded-xl p-4 hover:shadow-lg transition-all duration-300 border-l-4 border-secondary-500">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-5 h-5 text-secondary-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">Tutoring Hours Portal</h4>
+                                            <p class="text-gray-600 text-sm">Login to report and track tutoring hours</p>
+                                        </div>
+                                    </div>
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                            <a href="/contact.html" class="block bg-white rounded-xl p-4 hover:shadow-lg transition-all duration-300 border-l-4 border-accent-500">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">Contact Information</h4>
+                                            <p class="text-gray-600 text-sm">Get in touch with our team</p>
+                                        </div>
+                                    </div>
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-accent-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display font-bold text-xl">Show-Stoppers Academy</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering youth for a brighter tomorrow through sports and education.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/></svg>
+                        </a>
+                            </div>
+                        </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="/programs.html" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
+                        <li><a href="/portfolio-item.html" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Programs -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Programs</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/registration.html" class="text-gray-400 hover:text-white transition-colors">Rise & Grind Development</a></li>
+                        <li><a href="/portfolio-overview.html" class="text-gray-400 hover:text-white transition-colors">Holiday Showcase</a></li>
+                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Educational Workshops</a></li>
+                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Community Events</a></li>
+                    </ul>
+                    </div>
+                
+                <!-- Get Involved -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Get Involved</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/pricing.html" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Volunteer</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Sponsor</a></li>
+                        <li><a href="/registration.html" class="text-gray-400 hover:text-white transition-colors">Register</a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-black py-5">
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center justify-content-center header-container">
-                    <div class="col-lg-8 col-xl-7 col-xxl-6 header-text">
-                        <div class="my-5 text-center text-xl-start">
-                            <h1 class="display-4 fw-bolder text-white mb-3">Welcome to Show Stoppers Academy</h1>
-                            <p class="lead fw-normal text-white mb-4">Empowering Youth for a Brighter Tomorrow</p>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="btn btn-light btn-lg px-4 me-sm-3 rounded-pill" style="color: black; font-weight: bold;" href="blog-post.html">Rise And Grind Player Development Registration</a>
-                                <a class="btn btn-light btn-lg px-4 rounded-pill" style="color: black; font-weight: bold;" href="portfolio-overview.html">Holiday Showcase</a> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-5 col-xxl-6 header-image">
-                        <img class="img-fluid rounded-circle my-5" src="png2pdf%20(1)-1.png" alt="Show Stoppers Academy">
-                    </div>
-                </div>
-            </div>
-        </header>
-</header>
-
-            <!-- Features section-->
-            <!--<section class="py-5" id="features">
-                <div class="container px-5 my-5">
-                    <div class="row gx-5">
-                        <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">A better way to start building.</h2></div>
-                        <div class="col-lg-8">
-                            <div class="row gx-5 row-cols-1 row-cols-md-2">
-                                <div class="col mb-5 h-100">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                    <h2 class="h5">Featured title</h2>
-                                    <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                                </div>
-                                <div class="col mb-5 h-100">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                    <h2 class="h5">Featured title</h2>
-                                    <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                                </div>
-                                <div class="col mb-5 mb-md-0 h-100">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <h2 class="h5">Featured title</h2>
-                                    <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                                </div>
-                                <div class="col h-100">
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <h2 class="h5">Featured title</h2>
-                                    <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Testimonial section-->
-          <!--  <div class="py-5 bg-light">
-                <div class="container px-5 my-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-10 col-xl-7">
-                            <div class="text-center">
-                                <div class="fs-4 mb-4 fst-italic">"Working with Start Bootstrap templates has saved me tons of development time when building new projects! Starting with a Bootstrap template just makes things easier!"</div>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                    <div class="fw-bold">
-                                        Tom Ato
-                                        <span class="fw-bold text-primary mx-1">/</span>
-                                        CEO, Pomodoro
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog preview section-->
-          <!--  <section class="py-5">
-                <div class="container px-5 my-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-8 col-xl-6">
-                            <div class="text-center">
-                                <h2 class="fw-bolder">Show Stoppers Academy Reviews</h2>
-                                <p class="lead fw-normal text-muted mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row gx-5">
-                        <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Blog post title</h5></a>
-                                    <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                            <div class="small">
-                                                <div class="fw-bold">Kelly Rowan</div>
-                                                <div class="text-muted">March 12, 2023 &middot; 6 min read</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/adb5bd/495057" alt="..." />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Another blog post title</h5></a>
-                                    <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                            <div class="small">
-                                                <div class="fw-bold">Josiah Barclay</div>
-                                                <div class="text-muted">March 23, 2023 &middot; 4 min read</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/6c757d/343a40" alt="..." />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">The last blog post title is a little bit longer than the others</h5></a>
-                                    <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                            <div class="small">
-                                                <div class="fw-bold">Evelyn Martinez</div>
-                                                <div class="text-muted">April 2, 2023 &middot; 10 min read</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Call to action-->
-                    <!--<aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
-                        <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
-                            <div class="mb-4 mb-xl-0">
-                                <div class="fs-3 fw-bold text-white">Thank you to our sponsors</div>
-                                <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
-                            </div>
-                            <div class="ms-xl-4">
-                                <!--<div class="input-group mb-2">
-                                    <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
-                                    <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
-                                </div> -->
-                               <!-- <div class="small text-white-50">We care about privacy, and will never share your data.</div> -->
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-            </section>
-        </main>
-        <!-- Footer-->
-        <footer class="bg-black py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy;Show Stoppers Academy</div></div>
-                    <div class="col-auto">
-                      
-                    </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Show-Stoppers Academy. All rights reserved.</p>
                 </div>
             </div>
         </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-primary-600 text-white p-3 rounded-full shadow-lg hover:bg-primary-700 transition-all duration-300 opacity-0 invisible">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <!-- TypeScript Components -->
+    <script type="module">
+        import { Navigation } from './src/components/Navigation.js';
+        import { AnimationController, CounterAnimation } from './src/components/Animations.js';
+        import { throttle } from './src/utils/index.js';
+
+        // Initialize components
+        const navigation = new Navigation();
+        const animations = new AnimationController();
+        const counters = new CounterAnimation();
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        const handleScroll = throttle(() => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        }, 100);
+
+        window.addEventListener('scroll', handleScroll);
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        console.log('Homepage loaded successfully! 🚀');
+    </script>
     </body>
 </html>

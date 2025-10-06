@@ -1,197 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Show Stoppers Academy</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="lightbox.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View our gallery showcasing Show-Stoppers Academy programs, events, and community moments. See the impact we're making in youth development.">
+    <meta name="keywords" content="gallery, photos, events, programs, community, Show-Stoppers Academy, youth development">
+    
+    <title>Gallery - Show-Stoppers Academy</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5',
+                            400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c',
+                            800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a'
+                        },
+                        secondary: {
+                            50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
+                            400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309',
+                            800: '#92400e', 900: '#78350f', 950: '#451a03'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Poppins', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
 </head>
-<body class="d-flex flex-column h-100">
-    <main class="flex-shrink-0">
-        <!-- Navigation-->
-           <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-            <div class="container px-5">
-                <a class="navbar-brand fw-bolder" href="index.html">Show Stoppers Academy</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item fw-bolder"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item fw-bolder"><a class="nav-link" href="about.html">About Us</a></li> 
-                        <li class="nav-item fw-bolder"><a class="nav-link" href="pricing.html">Donate</a></li>
-                        <li class="nav-item fw-bolder"><a class="nav-link" href="faq.html">Events</a></li> 
-                          <li class="nav-item fw-bolder"><a class="nav-link" href="portfolio-item.html">Gallery</a></li> 
-                         <!--<li class="nav-item fw-bolder"><a class="nav-link" href="contact.html">Register</a></li> -->
-                         <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle fw-bolder" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                  <!--  <li><a class="dropdown-item fw-bolder"  href="blog-home.html">Balling At Fordham</a></li> -->
-                                      <li><a class="dropdown-item fw-bolder" href="blog-post.html">Rise And Grind Player Development</a></li> 
-                                    <!-- <li><a class="dropdown-item fw-bolder" href="contact.html">Fundraising Gala Ticket Purchase</a></li>c-->
-                                     <li><a class="dropdown-item fw-bolder" href="portfolio-overview.html">Holiday Showcase</a></li> 
-                                </ul>
-                            </li> 
+<body class="font-sans text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" x-data="{ mobileMenuOpen: false, scrolled: false }" x-init="
+        window.addEventListener('scroll', () => {
+            scrolled = window.scrollY > 100;
+        });
+    " :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/index.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display font-bold text-xl text-gray-900">Show-Stoppers Academy</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="/index.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="/about.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <div class="relative" x-data="{ dropdownOpen: false }">
+                            <button @click="dropdownOpen = !dropdownOpen" 
+                                    class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors flex items-center">
+                                Programs
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div x-show="dropdownOpen" 
+                                 @click.away="dropdownOpen = false"
+                                 x-transition
+                                 class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                                <a href="/registration.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-600 transition-colors">Rise & Grind Development</a>
+                                <a href="/portfolio-overview.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-600 transition-colors">Holiday Showcase</a>
+                                <a href="/faq.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-600 transition-colors">Educational Workshops</a>
+                            </div>
+                        </div>
+                        <a href="/portfolio-item.html" class="nav-link text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Gallery</a>
+                        <a href="/contact.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                        <a href="/pricing.html" class="bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-700 transition-colors">Donate</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/index.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Home</a>
+                <a href="/about.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">About</a>
+                <a href="/registration.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Rise & Grind Development</a>
+                <a href="/portfolio-overview.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Holiday Showcase</a>
+                <a href="/faq.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Educational Workshops</a>
+                <a href="/portfolio-item.html" class="block px-3 py-2 text-primary-600">Gallery</a>
+                <a href="/contact.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Contact</a>
+                <a href="/pricing.html" class="block px-3 py-2 bg-primary-600 text-white rounded-lg mx-3 text-center">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-[60vh] flex items-center relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6" data-animate="fade" data-delay="200">
+                Our Gallery
+            </h1>
+            <p class="text-xl lg:text-2xl text-gray-100 max-w-3xl mx-auto" data-animate="fade" data-delay="300">
+                Capturing the moments that define our mission - from training sessions to community events, see the impact we're making in youth development.
+            </p>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="py-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center">
+                <div class="flex space-x-4" x-data="{ activeFilter: 'all' }">
+                    <button @click="activeFilter = 'all'; filterGallery('all')" 
+                            :class="activeFilter === 'all' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'"
+                            class="px-6 py-2 rounded-full font-medium transition-colors">
+                        All Photos
+                    </button>
+                    <button @click="activeFilter = 'programs'; filterGallery('programs')" 
+                            :class="activeFilter === 'programs' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'"
+                            class="px-6 py-2 rounded-full font-medium transition-colors">
+                        Programs
+                    </button>
+                    <button @click="activeFilter = 'events'; filterGallery('events')" 
+                            :class="activeFilter === 'events' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'"
+                            class="px-6 py-2 rounded-full font-medium transition-colors">
+                        Events
+                    </button>
+                    <button @click="activeFilter = 'community'; filterGallery('community')" 
+                            :class="activeFilter === 'community' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'"
+                            class="px-6 py-2 rounded-full font-medium transition-colors">
+                        Community
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Moments That Matter</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Every photo tells a story of growth, achievement, and community spirit.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" data-stagger data-stagger-delay="100">
+                <!-- Gallery Item 1 -->
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="programs" onclick="openLightbox('Poster1.JPEG', 'Basketball Training Session')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="Poster1.JPEG" alt="Basketball Training Session" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Basketball Training</h3>
+                                <p class="text-sm">Skill development in action</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="events" onclick="openLightbox('Poster2.JPEG', 'Community Event')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="Poster2.JPEG" alt="Community Event" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Event</h3>
+                                <p class="text-sm">Bringing families together</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="programs" onclick="openLightbox('Poster3.JPEG', 'Educational Workshop')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="Poster3.JPEG" alt="Educational Workshop" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Educational Workshop</h3>
+                                <p class="text-sm">Learning and growing together</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="community" onclick="openLightbox('Poster4.jpg', 'Community Celebration')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="Poster4.jpg" alt="Community Celebration" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Celebration</h3>
+                                <p class="text-sm">Celebrating our achievements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Gallery Items -->
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="programs" onclick="openLightbox('SSSA1.jpg', 'Youth Development Program')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA1.jpg" alt="Youth Development Program" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Youth Development</h3>
+                                <p class="text-sm">Building tomorrow's leaders</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="events" onclick="openLightbox('SSSA2.jpg', 'Sports Tournament')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA2.jpg" alt="Sports Tournament" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Sports Tournament</h3>
+                                <p class="text-sm">Competition and camaraderie</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="community" onclick="openLightbox('SSSA3.jpg', 'Community Service')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA3.jpg" alt="Community Service" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Community Service</h3>
+                                <p class="text-sm">Giving back together</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" data-stagger-item data-animate="fade" data-category="programs" onclick="openLightbox('SSSA4.jpg', 'Leadership Training')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="SSSA4.jpg" alt="Leadership Training" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-semibold text-lg mb-2">Leadership Training</h3>
+                                <p class="text-sm">Developing character and skills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="/contact.html" class="bg-primary-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors">
+                    Share Your Photos With Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">See Us In Action</h2>
+                <p class="text-xl text-gray-600">Watch how we're making a difference in our community through sports and education.</p>
+            </div>
+            
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl" data-animate="fade" data-delay="300">
+                <video controls class="w-full h-auto" poster="assets/video-poster.jpg">
+                    <source src="Showstoppersvid.mov" type="video/mp4">
+                    <source src="showstoppers 2030.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display font-bold text-3xl lg:text-4xl mb-6" data-animate="fade" data-delay="200">Be Part of Our Story</h2>
+            <p class="text-xl mb-8 text-gray-100" data-animate="fade" data-delay="300">Join our community and help us capture more moments of growth and achievement.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-animate="fade" data-delay="400">
+                <a href="/registration.html" class="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    Join Our Programs
+                </a>
+                <a href="/contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-colors">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display font-bold text-xl">Show-Stoppers Academy</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Empowering youth for a brighter tomorrow through sports and education.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="/index.html#programs" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
+                        <li><a href="/portfolio-item.html" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Programs -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Programs</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/registration.html" class="text-gray-400 hover:text-white transition-colors">Rise & Grind Development</a></li>
+                        <li><a href="/portfolio-overview.html" class="text-gray-400 hover:text-white transition-colors">Holiday Showcase</a></li>
+                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Educational Workshops</a></li>
+                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Community Events</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Get Involved -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Get Involved</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/pricing.html" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Volunteer</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Sponsor</a></li>
+                        <li><a href="/registration.html" class="text-gray-400 hover:text-white transition-colors">Register</a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
-       
-        <!-- Page Content-->
-   <div class="containe bg-black" >
-        <div class="gallery">
-            <a href="SSA1.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSA1.jpg">
-            </a>
-      
-    <a href="SSA2.jpg" "close.png" data-lightbox="models" data-title="Caption1">
-             <img src="SSA2.jpg" "close.png">
-            </a>
-           <a href="SSA3.jpg" "next.png" data-lightbox="models" data-title="Caption1">
-             <img src="SSA3.jpg">
-            </a>
-            <a href="SSA4.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSA4.jpg">
-            </a>
-             <a href="SSA5%20(1)%20(1).jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSA5%20(1)%20(1).jpg">
-            </a>
-            <a href="SSA6.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSA6.jpg">
-            </a>
-            <a href="SSA7.MOV" data-lightbox="models" data-title="Caption1">
-              <video width="420" height="340" controls> <source src="SSA7.MOV" type="video/mp4"> </video>
-            </a>
-             <a href="SSSA1.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA1.jpg">
-            </a>
-            <a href="SSSA2.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA2.jpg">
-            </a>
-            <a href="SSSA3.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA3.jpg">
-            </a>
-            <a href="SSSA4.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA4.jpg">
-            </a>
-            <a href="SSSA5.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA5.jpg">
-            </a>
-            <a href="SSSA6.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA6.jpg">
-            </a>
-            <a href="SSSA7.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA7.jpg">
-            </a>
-            <a href="SSSA8.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA8.jpg">
-            </a>
-            <a href="SSSA9.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA9.jpg">
-            </a>
-            <a href="SSSA10.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA10.jpg">
-            </a>
-            <a href="SSSA11.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA11.jpg">
-            </a>
-            <a href="SSSA12.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA12.jpg">
-            </a>
-            <a href="SSSA13.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA13.jpg">
-            </a>
-            <a href="SSSA14.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA14.jpg">
-            </a>
-            <a href="SSSA15.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA15.jpg">
-            </a>
-            <a href="SSSA16.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA16.jpg">
-            </a>
-            <a href="SSSA17.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA17.jpg">
-            </a>
-            <a href="SSSA18.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA18.jpg">
-            </a>
-            <a href="SSSA19.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA19.jpg">
-            </a>
-            <a href="SSSA20.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA20.jpg">
-            </a>
-            <a href="SSSA21.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA21.jpg">
-            </a>
-            <a href="SSSA22.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA22.jpg">
-            </a>
-            <a href="SSSA23.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA23.jpg">
-            </a>
-            <a href="SSSA24.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA24.jpg">
-            </a>
-            <a href="SSSA25.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA25.jpg">
-            </a>
-            <a href="SSSA26.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA1.jpg">
-            </a>
-            <a href="SSSA27.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA27.jpg">
-            </a>
-            <a href="SSSA28.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA28.jpg">
-            </a>
-            <a href="SSSA29.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA29.jpg">
-            </a>
-            <a href="SSSA30.jpg" data-lightbox="models" data-title="Caption1">
-             <img src="SSSA30.jpg">
-            </a>
-         
-           
-           <!--<a href="PIC.png" data-lightbox="models" data-title="Caption1">
-             <img src="PIC.png">
-            </a> -->
-       </div>
-        </div>
-    </main>
-    <!-- Footer-->
-  
-         <footer class="bg-black py-4 mt-auto footer">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; Show Stoppers Academy</div>
-                </div>
-                <div class="col-auto">
-                    <a class="link-light small" href="#!">Privacy</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Terms</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Contact</a>
-                </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Show-Stoppers Academy. All rights reserved.</p>
             </div>
         </div>
     </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-       <!-- <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    <script src="lightbox-plus-jquery.js"> </script>
-    </body>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-primary-600 text-white p-3 rounded-full shadow-lg hover:bg-primary-700 transition-all duration-300 opacity-0 invisible">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <!-- Lightbox Script -->
+    <script>
+        function openLightbox(src, alt) {
+            const lightbox = document.createElement('div');
+            lightbox.className = 'fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4';
+            lightbox.innerHTML = `
+                <div class="relative max-w-4xl max-h-full">
+                    <img src="${src}" alt="${alt}" class="max-w-full max-h-full object-contain rounded-lg">
+                    <button class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors" onclick="this.closest('.fixed').remove()">×</button>
+                </div>
+            `;
+            document.body.appendChild(lightbox);
+            
+            // Close on escape key
+            const handleEscape = (e) => {
+                if (e.key === 'Escape') {
+                    lightbox.remove();
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+            document.addEventListener('keydown', handleEscape);
+            
+            // Close on backdrop click
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.remove();
+                }
+            });
+        }
+
+        function filterGallery(category) {
+            const items = document.querySelectorAll('[data-category]');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <!-- TypeScript Components -->
+    <script type="module">
+        import { Navigation } from './src/components/Navigation.js';
+        import { AnimationController, CounterAnimation } from './src/components/Animations.js';
+        import { throttle, showNotification } from './src/utils/index.js';
+
+        // Initialize components
+        const navigation = new Navigation();
+        const animations = new AnimationController();
+        const counters = new CounterAnimation();
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        const handleScroll = throttle(() => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        }, 100);
+
+        window.addEventListener('scroll', handleScroll);
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        console.log('Gallery page loaded successfully! 🚀');
+    </script>
+</body>
 </html>
-
-

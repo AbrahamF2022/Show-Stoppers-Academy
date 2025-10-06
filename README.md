@@ -1,6 +1,6 @@
-# Show-Stoppers Academy Website
+# Show Stoppers Academy Website
 
-A modern, responsive website built with TypeScript and Tailwind CSS for Show-Stoppers Academy - empowering youth through sports and education.
+A modern, responsive website built with TypeScript and Tailwind CSS for Show Stoppers Academy - empowering youth through sports and education.
 
 ## 🚀 Features
 
@@ -59,7 +59,7 @@ npm install
 #### Step 1: Create Google Sheet
 1. Go to [Google Sheets](https://sheets.google.com)
 2. Create a new spreadsheet
-3. Name it "Show-Stoppers Academy Submissions"
+3. Name it "Show Stoppers Academy Submissions"
 4. Copy the Sheet ID from the URL
 
 #### Step 2: Create Google Apps Script
@@ -210,7 +210,7 @@ For technical support or questions:
 
 ## 📄 License
 
-This project is proprietary to Show-Stoppers Academy. All rights reserved.
+This project is proprietary to Show Stoppers Academy. All rights reserved.
 
 ## 🔄 Updates and Maintenance
 
@@ -227,6 +227,6 @@ This project is proprietary to Show-Stoppers Academy. All rights reserved.
 
 ---
 
-**Built with ❤️ for Show-Stoppers Academy**
+**Built with ❤️ for Show Stoppers Academy**
 
 *Empowering youth for a brighter tomorrow through sports and education.*

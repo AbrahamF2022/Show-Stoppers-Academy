@@ -1,4 +1,4 @@
-// Core Types for Show-Stoppers Academy
+// Core Types for Show Stoppers Academy
 
 export interface NavItem {
   label: string;

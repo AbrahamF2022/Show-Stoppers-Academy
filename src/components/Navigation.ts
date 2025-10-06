@@ -1,4 +1,4 @@
-// Navigation Component for Show-Stoppers Academy
+// Navigation Component for Show Stoppers Academy
 
 import { NavItem } from '@/types';
 

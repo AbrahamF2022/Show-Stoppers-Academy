@@ -1,4 +1,4 @@
-// Contact Form Component for Show-Stoppers Academy
+// Contact Form Component for Show Stoppers Academy
 
 import { ContactForm, FormField, showNotification } from '@/types';
 import { validateEmail, validatePhone, validateFormField } from '@/utils';
@@ -182,7 +182,7 @@ export class ContactFormHandler {
 
     // Add timestamp
     data.timestamp = new Date().toISOString();
-    data.source = 'Show-Stoppers Academy Website';
+    data.source = 'Show Stoppers Academy Website';
 
     return data;
   }

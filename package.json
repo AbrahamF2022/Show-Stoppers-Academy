@@ -1,7 +1,7 @@
 {
   "name": "show-stoppers-academy",
   "version": "2.0.0",
-  "description": "Modern website for Show-Stoppers Academy - Empowering youth through sports and education",
+  "description": "Modern website for Show Stoppers Academy - Empowering youth through sports and education",
   "main": "index.html",
   "scripts": {
     "dev": "vite",
@@ -18,7 +18,7 @@
     "typescript",
     "tailwindcss"
   ],
-  "author": "Show-Stoppers Academy",
+  "author": "Show Stoppers Academy",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.10.0",

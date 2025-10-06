@@ -1,4 +1,4 @@
-// Google Apps Script for Show-Stoppers Academy Form Submissions
+// Google Apps Script for Show Stoppers Academy Form Submissions
 // This script handles form submissions and saves them to Google Sheets
 
 // Configuration
@@ -9,7 +9,7 @@ const CONFIG = {
   EMAIL_NOTIFICATIONS: {
     enabled: true,
     recipient: 'your-email@showstoppersacademy.com', // Replace with your email
-    subject: 'New Form Submission - Show-Stoppers Academy'
+    subject: 'New Form Submission - Show Stoppers Academy'
   }
 };
 
@@ -207,7 +207,7 @@ function sendEmailNotification(type, data) {
       <p>This submission has been automatically saved to the Google Sheet.</p>
       
       <hr>
-      <p><em>This is an automated notification from Show-Stoppers Academy.</em></p>
+      <p><em>This is an automated notification from Show Stoppers Academy.</em></p>
     `;
     
     MailApp.sendEmail({

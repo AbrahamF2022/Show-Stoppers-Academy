@@ -1,4 +1,4 @@
-// Animation Components for Show-Stoppers Academy
+// Animation Components for Show Stoppers Academy
 
 import { AnimationConfig, AnimationType } from '@/types';
 

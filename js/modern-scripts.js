@@ -1,4 +1,4 @@
-// Modern Show-Stoppers Academy JavaScript
+// Modern Show Stoppers Academy JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality

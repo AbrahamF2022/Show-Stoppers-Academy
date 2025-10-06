@@ -11,7 +11,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Show-Stoppers Academy',
+        name: 'Show Stoppers Academy',
         short_name: 'SSA',
         description: 'Empowering youth for a brighter tomorrow through sports and education',
         theme_color: '#dc2626',

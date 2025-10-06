@@ -1,4 +1,4 @@
-// Utility functions for Show-Stoppers Academy
+// Utility functions for Show Stoppers Academy
 
 import { AnimationConfig, Breakpoint } from '@/types';
 

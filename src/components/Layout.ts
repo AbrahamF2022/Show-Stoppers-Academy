@@ -26,7 +26,7 @@ export class LayoutManager {
       { label: 'About', href: '/about.html', icon: 'info-circle' },
       { 
         label: 'Programs', 
-        href: '/index.html#programs', 
+        href: '/programs.html', 
         icon: 'graduation-cap',
         children: [
           { label: 'Rise & Grind Development', href: '/registration.html' },
@@ -189,7 +189,7 @@ export class LayoutManager {
               <ul class="space-y-2">
                 <li><a href="/index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                 <li><a href="/about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-                <li><a href="/index.html#programs" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
+                <li><a href="/programs.html" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
                 <li><a href="/portfolio-item.html" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
                 <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
               </ul>

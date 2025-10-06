@@ -60,7 +60,7 @@
     </style>
 </head>
 <body class="font-sans text-gray-900 bg-white">
-    <!-- Navigation -->
+        <!-- Navigation -->
     <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" x-data="{ mobileMenuOpen: false, scrolled: false }" x-init="
         window.addEventListener('scroll', () => {
             scrolled = window.scrollY > 100;
@@ -70,12 +70,8 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <a href="/index.html" class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                        </div>
+                    <a href="/index.html" class="flex items-center space-x-3">
+                        <img src="PIC.png" alt="Show-Stoppers Academy Logo" class="w-10 h-10 rounded-full object-cover shadow-lg">
                         <span class="font-display font-bold text-xl text-gray-900">Show-Stoppers Academy</span>
                     </a>
                 </div>
@@ -92,7 +88,7 @@
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                 </svg>
-                            </button>
+                </button>
                             <div x-show="dropdownOpen" 
                                  @click.away="dropdownOpen = false"
                                  x-transition
@@ -117,7 +113,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+            </div>
         
         <!-- Mobile Navigation -->
         <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
@@ -244,8 +240,8 @@
                     <div x-show="openFaq === 6" x-transition class="px-8 pb-6">
                         <p class="text-gray-600">In addition to sports programs, we offer educational workshops covering financial literacy, health and wellness, leadership development, and life skills. We also organize community service projects, cultural events, and provide mentorship opportunities to help youth develop holistically.</p>
                     </div>
-                </div>
-
+        </div>
+       
                 <!-- FAQ Item 7 -->
                 <div class="bg-gray-50 rounded-2xl overflow-hidden" data-animate="fade" data-delay="900">
                     <button @click="openFaq = openFaq === 7 ? null : 7" 
@@ -257,9 +253,9 @@
                     </button>
                     <div x-show="openFaq === 7" x-transition class="px-8 pb-6">
                         <p class="text-gray-600">You can stay updated by following us on social media, subscribing to our newsletter, or checking our website regularly. We also send email updates to registered families about upcoming events, program changes, and special opportunities.</p>
-                    </div>
+    </div>
                 </div>
-            </div>
+</div>
         </div>
     </section>
 
@@ -309,8 +305,8 @@
                     <a href="/contact.html" class="text-primary-600 font-semibold hover:text-primary-700 transition-colors">Explore Programs →</a>
                 </div>
             </div>
-        </div>
-    </section>
+            </div>
+        </section>   
 
     <!-- Contact CTA -->
     <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-700 text-white">
@@ -327,7 +323,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -362,7 +358,7 @@
                     <ul class="space-y-2">
                         <li><a href="/index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                         <li><a href="/about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-                        <li><a href="/index.html#programs" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
+                        <li><a href="/programs.html" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
                         <li><a href="/portfolio-item.html" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
                         <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>

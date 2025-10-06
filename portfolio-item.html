@@ -18,6 +18,7 @@
     
     <!-- Custom CSS -->
     <link href="css/dynamic-effects.css" rel="stylesheet">
+    <link href="css/mobile-optimization.css" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -143,12 +144,18 @@
     <!-- Hero Section -->
     <section class="hero-bg min-h-[60vh] flex items-center relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6" data-animate="fade" data-delay="200">
-                Our Gallery
+            
+            <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 animate-text-glow" data-animate="fade" data-delay="200">
+                <span class="bg-gradient-to-r from-white via-primary-200 to-secondary-200 bg-clip-text text-transparent animate-gradient-x">
+                    Our Gallery
+                </span>
             </h1>
-            <p class="text-xl lg:text-2xl text-gray-100 max-w-3xl mx-auto" data-animate="fade" data-delay="300">
-                Capturing the moments that define our mission - from training sessions to community events, see the impact we're making in youth development.
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 max-w-4xl mx-auto animate-fade-in-up px-4" data-animate="fade" data-delay="300">
+                <span class="inline-block animate-typewriter">
+                    Capturing the moments that define our mission 
+                </span>
             </p>
+            
         </div>
         
         <!-- Scroll Indicator -->
@@ -160,8 +167,14 @@
     </section>
 
     <!-- Gallery Filter -->
-    <section class="py-6 sm:py-8 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-6 sm:py-8 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-element absolute w-32 h-32 bg-primary-100/20 rounded-full blur-2xl animate-float-1 top-1/2 left-10"></div>
+            <div class="floating-element absolute w-24 h-24 bg-secondary-100/20 rounded-full blur-xl animate-float-2 top-1/2 right-10"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex justify-center">
                 <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto" x-data="{ activeFilter: 'all' }">
                     <button @click="activeFilter = 'all'; filterGallery('all')" 
@@ -180,11 +193,22 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="py-12 sm:py-16 lg:py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-element absolute w-56 h-56 bg-primary-100/15 rounded-full blur-3xl animate-float-3 top-20 left-1/4"></div>
+            <div class="floating-element absolute w-48 h-48 bg-secondary-100/15 rounded-full blur-2xl animate-float-4 bottom-20 right-1/4"></div>
+            <div class="floating-element absolute w-40 h-40 bg-accent-100/15 rounded-full blur-3xl animate-float-5 top-1/2 left-1/2"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-12 sm:mb-16" data-animate="fade" data-delay="200">
-                <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-900 mb-4 px-4">Moments That Matter</h2>
-                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">Every photo tells a story of growth, achievement, and community spirit.</p>
+                <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-900 mb-4 px-4 animate-text-glow">
+                    <span class="bg-gradient-to-r from-gray-900 via-primary-600 to-secondary-600 bg-clip-text text-transparent">
+                        Moments That Matter
+                    </span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 animate-fade-in-up">Every photo tells a story of growth, achievement, and community spirit.</p>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6" data-stagger data-stagger-delay="100">

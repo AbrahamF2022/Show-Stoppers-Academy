@@ -1,0 +1,416 @@
+/* Mobile Optimization CSS for Show Stoppers Academy */
+
+/* Mobile-First Responsive Design */
+@media (max-width: 768px) {
+    /* Navigation Mobile Fixes */
+    .nav-link {
+        font-size: 1rem !important;
+        padding: 0.75rem 1rem !important;
+    }
+    
+    /* Mobile Navigation Menu */
+    .md\\:hidden .space-y-1 a {
+        font-size: 1rem !important;
+        padding: 0.875rem 1rem !important;
+        margin: 0.25rem 0.75rem !important;
+    }
+    
+    /* Hero Section Mobile Optimization */
+    .hero-bg {
+        min-height: 100vh !important;
+        padding: 2rem 0 !important;
+    }
+    
+    /* Logo Section Mobile */
+    .animate-float {
+        margin-bottom: 2rem !important;
+    }
+    
+    .w-40.h-40, .w-32.h-32 {
+        width: 6rem !important;
+        height: 6rem !important;
+    }
+    
+    .w-32.h-32 img {
+        width: 4rem !important;
+        height: 4rem !important;
+    }
+    
+    /* Floating Elements - Reduce on Mobile */
+    .floating-element {
+        display: none !important;
+    }
+    
+    /* Show only essential floating elements */
+    .floating-element:nth-child(1),
+    .floating-element:nth-child(2) {
+        display: block !important;
+        width: 2rem !important;
+        height: 2rem !important;
+        opacity: 0.3 !important;
+    }
+    
+    /* Text Sizing Mobile */
+    .font-display.font-bold.text-4xl {
+        font-size: 2.5rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .font-display.font-bold.text-3xl {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .font-display.font-bold.text-5xl {
+        font-size: 3rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .font-display.font-bold.text-6xl {
+        font-size: 3.5rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .font-display.font-bold.text-7xl {
+        font-size: 4rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* Paragraph Text Mobile */
+    .text-xl {
+        font-size: 1.125rem !important;
+    }
+    
+    .text-2xl {
+        font-size: 1.25rem !important;
+    }
+    
+    .text-3xl {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Button Mobile Optimization */
+    .px-10.py-5 {
+        padding: 1rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+    
+    .px-6.py-3 {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    /* Section Padding Mobile */
+    .py-20 {
+        padding: 3rem 0 !important;
+    }
+    
+    .py-16 {
+        padding: 2.5rem 0 !important;
+    }
+    
+    .py-12 {
+        padding: 2rem 0 !important;
+    }
+    
+    /* Grid Mobile Optimization */
+    .grid.md\\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .grid.lg\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .grid.lg\\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+    
+    .grid.xl\\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+    
+    /* Card Mobile Optimization */
+    .rounded-3xl.p-8 {
+        padding: 1.5rem !important;
+        border-radius: 1rem !important;
+    }
+    
+    .rounded-2xl.p-8 {
+        padding: 1.5rem !important;
+        border-radius: 0.75rem !important;
+    }
+    
+    /* Gallery Mobile Optimization */
+    .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    
+    /* Gallery Items Mobile */
+    .h-48.sm\\:h-64 {
+        height: 8rem !important;
+    }
+    
+    /* Form Mobile Optimization */
+    .space-y-6 .space-y-4 {
+        gap: 1rem !important;
+    }
+    
+    /* Input Fields Mobile */
+    input, textarea, select {
+        padding: 0.875rem !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Footer Mobile */
+    .grid.md\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center !important;
+    }
+    
+    /* Typography Mobile */
+    .text-sm {
+        font-size: 0.875rem !important;
+    }
+    
+    .text-base {
+        font-size: 1rem !important;
+    }
+    
+    .text-lg {
+        font-size: 1.125rem !important;
+    }
+    
+    /* Spacing Mobile */
+    .mb-16 {
+        margin-bottom: 2rem !important;
+    }
+    
+    .mb-12 {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mb-8 {
+        margin-bottom: 1.25rem !important;
+    }
+    
+    .mb-6 {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mb-4 {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    /* Container Mobile */
+    .max-w-7xl {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Animation Performance Mobile */
+    .animate-float,
+    .animate-spin-slow,
+    .animate-spin-reverse,
+    .animate-bounce-slow {
+        animation-duration: 3s !important;
+    }
+    
+    /* Reduce complex animations on mobile */
+    .animate-gradient-x {
+        animation-duration: 4s !important;
+    }
+    
+    .animate-text-glow {
+        animation-duration: 2s !important;
+    }
+    
+    /* Hide some decorative elements on mobile */
+    .animate-pulse-soft,
+    .animate-glow {
+        animation: none !important;
+    }
+    
+    /* Touch-friendly interactions */
+    button, a {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+    
+    /* Gallery filter buttons mobile */
+    .flex.flex-col.sm\\:flex-row {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+    
+    .flex.flex-col.sm\\:flex-row button {
+        width: 100% !important;
+        padding: 1rem !important;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    /* Even smaller text for very small screens */
+    .font-display.font-bold.text-4xl {
+        font-size: 2rem !important;
+    }
+    
+    .font-display.font-bold.text-5xl {
+        font-size: 2.5rem !important;
+    }
+    
+    .font-display.font-bold.text-6xl {
+        font-size: 3rem !important;
+    }
+    
+    .font-display.font-bold.text-7xl {
+        font-size: 3.5rem !important;
+    }
+    
+    /* Single column grid for very small screens */
+    .grid.lg\\:grid-cols-4,
+    .grid.xl\\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Gallery single column on very small screens */
+    .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Reduce padding even more */
+    .py-20 {
+        padding: 2rem 0 !important;
+    }
+    
+    .py-16 {
+        padding: 1.5rem 0 !important;
+    }
+    
+    /* Logo smaller on very small screens */
+    .w-40.h-40, .w-32.h-32 {
+        width: 4rem !important;
+        height: 4rem !important;
+    }
+    
+    .w-32.h-32 img {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-bg {
+        min-height: 100vh !important;
+        padding: 1rem 0 !important;
+    }
+    
+    .animate-float {
+        margin-bottom: 1rem !important;
+    }
+    
+    .w-40.h-40, .w-32.h-32 {
+        width: 5rem !important;
+        height: 5rem !important;
+    }
+    
+    .py-20 {
+        padding: 2rem 0 !important;
+    }
+}
+
+/* Performance Optimizations */
+@media (max-width: 768px) {
+    /* Reduce motion for better performance */
+    * {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.2s !important;
+    }
+    
+    /* Disable complex animations on mobile */
+    .morph-bg {
+        animation: none !important;
+    }
+    
+    /* Optimize transforms */
+    .transform {
+        transform: none !important;
+    }
+    
+    .hover\\:scale-105:hover {
+        transform: none !important;
+    }
+    
+    .hover\\:-translate-y-2:hover {
+        transform: none !important;
+    }
+    
+    /* Optimize shadows */
+    .shadow-xl,
+    .shadow-2xl {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .hover\\:shadow-xl:hover,
+    .hover\\:shadow-2xl:hover {
+        box-shadow: inherit !important;
+    }
+    
+    .hover\\:scale-105:hover,
+    .hover\\:-translate-y-2:hover,
+    .hover\\:scale-110:hover {
+        transform: none !important;
+    }
+    
+    /* Make buttons more touch-friendly */
+    button, a {
+        padding: 1rem !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Increase tap targets */
+    .group.cursor-pointer {
+        min-height: 48px !important;
+        min-width: 48px !important;
+    }
+}
+
+/* High DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Ensure crisp images on retina displays */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .floating-element,
+    .animate-float,
+    .hero-bg::before,
+    .hero-bg::after {
+        display: none !important;
+    }
+    
+    .hero-bg {
+        background: #f3f4f6 !important;
+        color: #000 !important;
+    }
+    
+    .bg-gradient-to-br {
+        background: #ffffff !important;
+    }
+}

@@ -90,7 +90,33 @@
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="/index.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Home</a>
                         <a href="/about.html" class="nav-link bg-primary-600 text-white px-4 py-2 rounded-full text-base font-semibold transition-colors">About</a>
-                        <a href="/programs.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Programs</a>
+                        <div class="relative group">
+                            <a href="/programs.html" class="nav-link flex items-center text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">
+                                <span>Programs</span>
+                                <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div class="absolute left-0 mt-3 w-72 bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 pointer-events-none transform translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-50">
+                                <div class="py-4 space-y-1">
+                                    <a href="/programs.html#thanksgiving-camp" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Thanksgiving Camp
+                                    </a>
+                                    <a href="/programs.html#rise-grind" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Rise &amp; Grind Player Development
+                                    </a>
+                                    <a href="/programs.html#holiday-showcase" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Holiday Showcase
+                                    </a>
+                                    <a href="/programs.html#education" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Educational Programs
+                                    </a>
+                                    <a href="/registration.html" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Program Registration
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <a href="/portfolio-item.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Gallery</a>
                         <a href="/contact.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Contact</a>
                         <a href="/pricing.html" class="bg-secondary-600 text-white px-4 py-2 rounded-full text-base font-semibold hover:bg-secondary-700 transition-colors">Donate</a>
@@ -99,7 +125,7 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2">
+                    <button id="mobile-menu-button" type="button" @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2" aria-expanded="false" aria-controls="mobile-menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -109,11 +135,20 @@
         </div>
         
         <!-- Mobile Navigation -->
-        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
+        <div id="mobile-menu" x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="/index.html" class="block px-4 py-3 text-gray-900 hover:text-primary-600 hover:bg-primary-50 rounded-lg mx-3 font-semibold">Home</a>
                 <a href="/about.html" class="block px-4 py-3 text-white bg-primary-600 rounded-lg mx-3 text-center font-semibold">About</a>
-                <a href="/programs.html" class="block px-4 py-3 text-gray-900 hover:text-primary-600 hover:bg-primary-50 rounded-lg mx-3 font-semibold">Programs</a>
+                <div class="mx-3 border border-gray-100 rounded-lg bg-white">
+                    <a href="/programs.html" class="block px-4 py-3 text-gray-900 font-semibold border-b border-gray-100">Programs Overview</a>
+                    <div class="px-4 py-3 space-y-2 text-sm text-gray-700">
+                        <a href="/programs.html#thanksgiving-camp" class="block hover:text-primary-600 font-medium">• Thanksgiving Camp</a>
+                        <a href="/programs.html#rise-grind" class="block hover:text-primary-600 font-medium">• Rise &amp; Grind Player Development</a>
+                        <a href="/programs.html#holiday-showcase" class="block hover:text-primary-600 font-medium">• Holiday Showcase</a>
+                        <a href="/programs.html#education" class="block hover:text-primary-600 font-medium">• Educational Programs</a>
+                        <a href="/registration.html" class="block hover:text-primary-600 font-medium">• Program Registration</a>
+                    </div>
+                </div>
                 <a href="/portfolio-item.html" class="block px-4 py-3 text-gray-900 hover:text-primary-600 hover:bg-primary-50 rounded-lg mx-3 font-semibold">Gallery</a>
                 <a href="/contact.html" class="block px-4 py-3 text-gray-900 hover:text-primary-600 hover:bg-primary-50 rounded-lg mx-3 font-semibold">Contact</a>
                 <a href="/pricing.html" class="block px-4 py-3 text-white bg-secondary-600 hover:bg-secondary-700 rounded-lg mx-3 text-center font-semibold">Donate</a>
@@ -210,6 +245,70 @@
             </div>
         </div>
       </section>
+
+    <!-- Leadership Bios -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate="fade" data-delay="200">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Leadership</h2>
+                <p class="text-xl text-gray-600">Meet the visionaries guiding our mission and impact.</p>
+            </div>
+            
+            <div class="space-y-16">
+                <!-- Shana Stevenson -->
+                <article class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300" data-animate="fade" data-delay="300">
+                    <header class="mb-6">
+                        <h3 class="font-display font-bold text-2xl text-gray-900">Shana Stevenson</h3>
+                        <p class="text-primary-600 font-semibold mt-2">
+                            CEO, Shana Stevenson Group Incorporated | Co-Founder &amp; Director, Showstoppers Academy | Owner &amp; Director, Sky’s the Limit Daycare
+                        </p>
+                    </header>
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p>Shana Stevenson is the Chief Executive Officer of Shana Stevenson Group Incorporated, a premier client consulting firm specializing in Anti-Money Laundering (AML) compliance and the U.S. Patriot Act. Under her leadership, the firm has earned a reputation for excellence, providing strategic regulatory guidance and compliance solutions to some of the world’s largest financial institutions—including JPMorgan Chase, Rabobank, Wells Fargo, Citi, and Bank of America. With a deep understanding of financial regulations, risk management, and operational integrity, Shana and her team help organizations maintain compliance, strengthen internal controls, and uphold the highest ethical standards across the banking industry.</p>
+                        <p>In addition to her corporate success, Shana is the Co-Founder and Director of Showstoppers Academy, an innovative youth development organization that integrates academics, athletics, and personal growth. At Showstoppers Academy, she leads programs that provide tutoring, mental and physical therapy, health and wellness education, and leadership development. Her mission is to empower young people to excel academically, build resilience, and develop the discipline and confidence necessary for success both on and off the court.</p>
+                        <p>Shana is also the Owner and Director of Sky’s the Limit Daycare, a trusted childcare and educational center serving children from 6 months to 14 years old. The program offers fluent bilingual instruction in Spanish, French, Mandarin, and English, along with math enrichment, piano lessons, nutritious homemade meals, and 24-hour childcare services. Through this program, Shana provides a nurturing and inclusive environment where children can thrive academically, creatively, and emotionally.</p>
+                        <p>A dynamic leader, entrepreneur, and mentor, Shana Stevenson exemplifies excellence in both the professional and community spheres. Her commitment to advancing corporate compliance, youth empowerment, and early childhood education continues to make a lasting impact on families, institutions, and communities alike.</p>
+                    </div>
+                </article>
+                
+                <!-- Melquan Bolden -->
+                <article class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300" data-animate="fade" data-delay="400">
+                    <header class="mb-6">
+                        <h3 class="font-display font-bold text-2xl text-gray-900">Melquan Bolden</h3>
+                        <p class="text-primary-600 font-semibold mt-2">
+                            Founder, Director, and Head Coach – InnerCity Community and Neighborhood Development LLC d/b/a – Showstoppers Academy (SSA) | Head Coach – Dyckman SemiPro Adult Basketball League | Community Activist – Harlem, New York
+                        </p>
+                    </header>
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p>Melquan Bolden is a proud Harlem native, visionary leader, and lifelong advocate for youth and community empowerment. His journey began on the legendary basketball courts of Harlem, where his passion for the game evolved into a purpose-driven mission to mentor, uplift, and create life-changing opportunities for young people through sports and education.</p>
+                        <p>After a successful high school and collegiate basketball career, Melquan transitioned into the construction industry, where he has built a 15-plus-year career marked by leadership, integrity, and perseverance. His work in construction reflects his philosophy in life—laying strong, lasting foundations for growth, stability, and success.</p>
+                        <p>As the Founder, Director, and Coach of InnerCity Community and Neighborhood Development LLC, doing business as Showstoppers Academy (SSA), Melquan has established one of New York City’s premier youth development programs. SSA’s mission extends beyond athletics, combining basketball training, academic tutoring, financial literacy education, health and wellness programming, and personal development to cultivate student-athletes who excel both on the court and in the classroom.</p>
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Under Melquan’s leadership, Showstoppers Academy has achieved significant competitive success, including:</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Grenada Championships – cultivating international exposure and competitive excellence</li>
+                                <li>Tri-State Championships – multiple age-group titles earned through elite play across New York, New Jersey, and Connecticut</li>
+                                <li>Adidas 3SSB Championship – national recognition within one of the most prestigious grassroots circuits in the country</li>
+                                <li>A-Game Championships – repeated success showcasing player development, teamwork, and program consistency</li>
+                            </ul>
+                        </div>
+                        <p>These victories underscore SSA’s growing reputation as a nationally recognized program that develops well-rounded athletes prepared for collegiate and professional opportunities.</p>
+                        <p>As Head Coach of the Dyckman SemiPro Adult Basketball League, Melquan has guided his teams to become a consistent force in New York City basketball. His leadership and mentorship have produced championship-caliber teams, standout athletes, and respected community role models. Known for his disciplined, motivational coaching style, he instills principles of integrity, accountability, and teamwork that transcend the game itself.</p>
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Under his broader leadership, his programs have also secured:</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Four championships at the iconic Dyckman Park Basketball Tournament</li>
+                                <li>One championship at the legendary Rucker Park</li>
+                                <li>Over fifteen adult league titles in the past five years</li>
+                            </ul>
+                        </div>
+                        <p>Beyond athletics, Melquan is a devoted community activist dedicated to serving Harlem through youth initiatives, mentorship programs, and collaborative neighborhood development. Through InnerCity Community and Neighborhood Development LLC, he continues to design programs that unify athletics, academics, and community service—creating sustainable opportunities for young people to thrive.</p>
+                        <p>Driven by purpose, grounded in faith, and fueled by vision, Melquan Bolden is more than a coach—he is a builder, mentor, and changemaker whose work continues to shape the future of Harlem and beyond.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <!-- Values Section -->
     <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
@@ -380,129 +479,6 @@
                     </div>
             </div>
           </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-animate="fade" data-delay="200">
-                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Meet Our Team</h2>
-                <p class="text-xl text-gray-600">The dedicated professionals who make our mission possible.</p>
-            </div>
-
-            <!-- Team Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Team Member 1 - Placeholder -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="300">
-                    <div class="text-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
-                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Team Member 2 - Placeholder -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="400">
-                    <div class="text-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-secondary-400 to-accent-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
-                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Team Member 3 - Placeholder -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="500">
-                    <div class="text-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-accent-400 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
-                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Team Member 4 - Placeholder -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="600">
-                    <div class="text-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-primary-500 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
-                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Team Member 5 - Placeholder -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="700">
-                    <div class="text-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-secondary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
-                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Team Member 6 - Placeholder -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-animate="fade" data-delay="800">
-                    <div class="text-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-accent-500 to-secondary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Team Member Name</h3>
-                        <p class="text-primary-600 font-semibold mb-4">Position Title</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Brief bio about the team member's background, experience, and passion for youth development. This space is ready for team bios and headshots.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action for Team -->
-            <div class="text-center mt-12" data-animate="fade" data-delay="900">
-                <div class="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-8 text-white">
-                    <h3 class="font-display font-bold text-2xl mb-4">Join Our Team</h3>
-                    <p class="text-lg mb-6 text-gray-100">We're always looking for passionate individuals who want to make a difference in the lives of young people.</p>
-                    <a href="/contact.html" class="inline-flex items-center bg-white text-primary-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
-                        </svg>
-                        Contact Us About Opportunities
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
 

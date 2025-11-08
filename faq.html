@@ -81,21 +81,31 @@
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="/index.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Home</a>
                         <a href="/about.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">About</a>
-                        <div class="relative" x-data="{ dropdownOpen: false }">
-                            <button @click="dropdownOpen = !dropdownOpen" 
-                                    class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors flex items-center">
-                                Programs
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <div class="relative group">
+                            <a href="/programs.html" class="nav-link flex items-center text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">
+                                <span>Programs</span>
+                                <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                 </svg>
-                </button>
-                            <div x-show="dropdownOpen" 
-                                 @click.away="dropdownOpen = false"
-                                 x-transition
-                                 class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-                                <a href="/registration.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-600 transition-colors">Rise & Grind Development</a>
-                                <a href="/portfolio-overview.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-600 transition-colors">Holiday Showcase</a>
-                                <a href="/faq.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-600 transition-colors">Educational Workshops</a>
+                            </a>
+                            <div class="absolute left-0 mt-3 w-72 bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 pointer-events-none transform translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-50">
+                                <div class="py-4 space-y-1">
+                                    <a href="/programs.html#thanksgiving-camp" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Thanksgiving Camp
+                                    </a>
+                                    <a href="/programs.html#rise-grind" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Rise &amp; Grind Player Development
+                                    </a>
+                                    <a href="/programs.html#holiday-showcase" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Holiday Showcase
+                                    </a>
+                                    <a href="/programs.html#education" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Educational Programs
+                                    </a>
+                                    <a href="/registration.html" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Program Registration
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <a href="/portfolio-item.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Gallery</a>
@@ -106,7 +116,7 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2">
+                    <button id="mobile-menu-button" type="button" @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2" aria-expanded="false" aria-controls="mobile-menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -116,12 +126,20 @@
             </div>
         
         <!-- Mobile Navigation -->
-        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
+        <div id="mobile-menu" x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="/index.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Home</a>
                 <a href="/about.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">About</a>
-                <a href="/registration.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Rise & Grind Development</a>
-                <a href="/portfolio-overview.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Holiday Showcase</a>
+                <div class="px-3 py-2 rounded-lg bg-white border border-gray-100">
+                    <a href="/programs.html" class="block text-gray-900 font-semibold border-b border-gray-200 pb-2">Programs Overview</a>
+                    <div class="pt-2 space-y-1 text-sm text-gray-700">
+                        <a href="/programs.html#thanksgiving-camp" class="block hover:text-primary-600 font-medium">• Thanksgiving Camp</a>
+                        <a href="/programs.html#rise-grind" class="block hover:text-primary-600 font-medium">• Rise &amp; Grind Player Development</a>
+                        <a href="/programs.html#holiday-showcase" class="block hover:text-primary-600 font-medium">• Holiday Showcase</a>
+                        <a href="/programs.html#education" class="block hover:text-primary-600 font-medium">• Educational Programs</a>
+                        <a href="/registration.html" class="block hover:text-primary-600 font-medium">• Program Registration</a>
+                    </div>
+                </div>
                 <a href="/faq.html" class="block px-3 py-2 text-primary-600">Educational Workshops</a>
                 <a href="/portfolio-item.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Gallery</a>
                 <a href="/contact.html" class="block px-3 py-2 text-gray-900 hover:text-primary-600">Contact</a>

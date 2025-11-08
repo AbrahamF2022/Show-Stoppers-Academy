@@ -90,7 +90,33 @@
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="/index.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Home</a>
                         <a href="/about.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">About</a>
-                        <a href="/programs.html" class="nav-link bg-primary-600 text-white px-4 py-2 rounded-full text-base font-semibold transition-colors">Programs</a>
+                        <div class="relative group">
+                            <a href="/programs.html" class="nav-link flex items-center bg-primary-600 text-white px-4 py-2 rounded-full text-base font-semibold transition-colors hover:bg-primary-500">
+                                <span>Programs</span>
+                                <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div class="absolute left-0 mt-3 w-72 bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 pointer-events-none transform translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-50">
+                                <div class="py-4 space-y-1">
+                                    <a href="#thanksgiving-camp" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Thanksgiving Camp
+                                    </a>
+                                    <a href="#rise-grind" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Rise &amp; Grind Player Development
+                                    </a>
+                                    <a href="#holiday-showcase" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Holiday Showcase
+                                    </a>
+                                    <a href="#education" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Educational Programs
+                                    </a>
+                                    <a href="/registration.html" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Program Registration
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <a href="/portfolio-item.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Gallery</a>
                         <a href="/contact.html" class="nav-link text-gray-900 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-full text-base font-semibold transition-colors">Contact</a>
                         <a href="/pricing.html" class="bg-secondary-600 text-white px-4 py-2 rounded-full text-base font-semibold hover:bg-secondary-700 transition-colors">Donate</a>
@@ -99,7 +125,7 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2">
+                    <button id="mobile-menu-button" type="button" @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-900 hover:text-primary-600 p-2" aria-expanded="false" aria-controls="mobile-menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -109,11 +135,20 @@
         </div>
         
         <!-- Mobile Navigation -->
-        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
+        <div id="mobile-menu" x-show="mobileMenuOpen" x-transition class="md:hidden bg-white shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="/index.html" class="block px-4 py-3 text-gray-900 hover:text-primary-600 hover:bg-primary-50 rounded-lg mx-3 font-semibold">Home</a>
                 <a href="/about.html" class="block px-4 py-3 text-gray-900 hover:text-primary-600 hover:bg-primary-50 rounded-lg mx-3 font-semibold">About</a>
-                <a href="/programs.html" class="block px-4 py-3 text-white bg-primary-600 rounded-lg mx-3 text-center font-semibold">Programs</a>
+                <div class="mx-3 border border-gray-100 rounded-lg bg-white">
+                    <a href="/programs.html" class="block px-4 py-3 text-white bg-primary-600 rounded-t-lg font-semibold text-center">Programs Overview</a>
+                    <div class="px-4 py-3 space-y-2 text-sm text-gray-700">
+                        <a href="#thanksgiving-camp" class="block hover:text-primary-600 font-medium">• Thanksgiving Camp</a>
+                        <a href="#rise-grind" class="block hover:text-primary-600 font-medium">• Rise &amp; Grind Player Development</a>
+                        <a href="#holiday-showcase" class="block hover:text-primary-600 font-medium">• Holiday Showcase</a>
+                        <a href="#education" class="block hover:text-primary-600 font-medium">• Educational Programs</a>
+                        <a href="/registration.html" class="block hover:text-primary-600 font-medium">• Program Registration</a>
+                    </div>
+                </div>
                 <a href="/portfolio-item.html" class="block px-4 py-3 text-gray-900 hover:text-primary-600 hover:bg-primary-50 rounded-lg mx-3 font-semibold">Gallery</a>
                 <a href="/contact.html" class="block px-4 py-3 text-gray-900 hover:text-primary-600 hover:bg-primary-50 rounded-lg mx-3 font-semibold">Contact</a>
                 <a href="/pricing.html" class="block px-4 py-3 text-white bg-secondary-600 hover:bg-secondary-700 rounded-lg mx-3 text-center font-semibold">Donate</a>
@@ -139,6 +174,82 @@
         </div>
     </section>
 
+    <!-- Thanksgiving Camp Section -->
+    <section id="thanksgiving-camp" class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-element absolute w-36 h-36 bg-primary-100/25 rounded-full blur-3xl animate-float-2 top-10 right-16"></div>
+            <div class="floating-element absolute w-28 h-28 bg-secondary-100/25 rounded-full blur-2xl animate-float-3 bottom-10 left-10"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10" data-animate="fade" data-delay="200">
+                <p class="text-primary-600 font-semibold tracking-wide mb-2 uppercase">Show Stoppers Academy Presents</p>
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-2">Our 1st Annual Thanksgiving Camp</h2>
+                <p class="text-lg text-gray-600">Keep your child active, learning, and having fun during the holiday break while preparing for the Thanksgiving feast.</p>
+            </div>
+            <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-2xl border border-primary-100/60" data-animate="fade" data-delay="300">
+                <div class="grid lg:grid-cols-2 gap-10">
+                    <div class="space-y-6">
+                        <div class="p-5 rounded-2xl border border-gray-100 bg-white/60">
+                            <h3 class="font-display font-semibold text-lg text-gray-900 mb-1">Dates</h3>
+                            <p class="text-gray-600 text-base">November 24th – November 26th</p>
+                        </div>
+                        <div class="p-5 rounded-2xl border border-gray-100 bg-white/60">
+                            <h3 class="font-display font-semibold text-lg text-gray-900 mb-1">Time</h3>
+                            <p class="text-gray-600 text-base">10:00 A.M. – 3:00 P.M.</p>
+                        </div>
+                        <div class="p-5 rounded-2xl border border-gray-100 bg-white/60">
+                            <h3 class="font-display font-semibold text-lg text-gray-900 mb-1">Location</h3>
+                            <p class="text-gray-600 text-base leading-relaxed">
+                                KIPP Infinity<br>
+                                625 West 133rd Street &amp; Broadway<br>
+                                New York, NY
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-2xl border border-gray-100 bg-white/60">
+                            <h3 class="font-display font-semibold text-lg text-gray-900 mb-1">Meals</h3>
+                            <p class="text-gray-600 text-base">Nutritious meals are provided daily for every athlete.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="rounded-2xl border border-primary-100 p-6 bg-primary-50/40">
+                            <h3 class="font-display font-semibold text-lg text-gray-900 mb-3">Camp Includes</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start">
+                                    <span class="text-primary-500 mr-2 mt-0.5">•</span>
+                                    <span>Show Stoppers Academy T-Shirt</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-primary-500 mr-2 mt-0.5">•</span>
+                                    <span>Skills &amp; drills training</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-primary-500 mr-2 mt-0.5">•</span>
+                                    <span>Competitive scrimmage games</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="rounded-2xl border border-secondary-100 p-6 bg-secondary-50/40">
+                            <h3 class="font-display font-semibold text-lg text-gray-900 mb-2">Tuition</h3>
+                            <p class="text-3xl font-bold text-secondary-600 mb-2">$200 <span class="text-base font-medium text-gray-500">per athlete</span></p>
+                            <p class="text-gray-600 text-sm leading-relaxed">Tuition covers all camp materials, daily meals, and training activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <h4 class="font-display font-semibold text-xl text-gray-900 mb-4">Registration Form</h4>
+                    <div class="rounded-2xl border-2 border-dashed border-primary-300 bg-white/80 p-8 text-center text-gray-500 shadow-inner">
+                        Paste your Google Form embed iframe here.
+                        <!-- Example:
+                        <iframe src="YOUR_GOOGLE_FORM_EMBED_URL"
+                                width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                        -->
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-gray-700 mt-10 text-lg font-medium">Let’s stay active, sharpen our game, and give thanks together this holiday season.</p>
+        </div>
+    </section>
+
     <!-- Programs Overview -->
     <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
         <!-- Background Elements -->
@@ -160,7 +271,7 @@
             
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- Rise & Grind Program -->
-                <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-300" data-animate="fade" data-delay="300">
+                <div id="rise-grind" class="bg-white rounded-3xl p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-300" data-animate="fade" data-delay="300">
                     <div class="text-center mb-8">
                         <div class="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-6 shadow-lg">
                             <img src="SSSA11.jpg" alt="Rise & Grind Development" class="w-full h-full object-cover">
@@ -224,7 +335,7 @@
                 </div>
                 
                 <!-- Holiday Showcase Program -->
-                <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-300" data-animate="fade" data-delay="400">
+                <div id="holiday-showcase" class="bg-white rounded-3xl p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-300" data-animate="fade" data-delay="400">
                     <div class="text-center mb-8">
                         <div class="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-6 shadow-lg">
                             <img src="SSSA12.jpg" alt="Holiday Showcase" class="w-full h-full object-cover">
@@ -291,7 +402,7 @@
     </section>
 
     <!-- Educational Programs -->
-    <section class="py-20 bg-gradient-to-br from-gray-50 to-accent-50">
+    <section id="education" class="py-20 bg-gradient-to-br from-gray-50 to-accent-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-animate="fade" data-delay="200">
                 <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">Educational Programs</h2>

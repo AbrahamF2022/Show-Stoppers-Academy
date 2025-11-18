@@ -1,232 +1,141 @@
-# Show Stoppers Academy Website
+# Show Stoppers Academy
 
-A modern, responsive website built with TypeScript and Tailwind CSS for Show Stoppers Academy - empowering youth through sports and education.
+Modern website for Show Stoppers Academy - Empowering youth through sports and education.
 
-## 🚀 Features
+## Features
 
-- **Modern Design**: Clean, professional design with cohesive branding
-- **TypeScript**: Type-safe development with modern JavaScript features
-- **Tailwind CSS**: Utility-first CSS framework for rapid styling
-- **Responsive**: Perfect on all devices - mobile, tablet, and desktop
-- **Interactive**: Smooth animations and engaging user interactions
-- **Form Integration**: Custom forms that connect to Google Sheets
-- **Performance Optimized**: Fast loading with optimized assets
-- **SEO Ready**: Meta tags, structured data, and accessibility features
+- **Public Website**: Showcase programs, leadership, and mission
+- **Tutoring Hours Platform**: Login portal for tutors, students, and administrators to track tutoring sessions
+- **Program Management**: Event registration and program information
+- **Gallery**: Photo galleries and program highlights
 
-## 📁 Project Structure
+## Quick Start
+
+### Development
+
+1. **Install Dependencies**
+   ```bash
+   npm run install:all
+   ```
+
+2. **Start Both Frontend and Backend**
+   ```bash
+   npm run dev:all
+   ```
+   
+   This will start:
+   - Frontend at `http://localhost:5173` (Vite dev server)
+   - Backend API at `http://localhost:4000` (Express server)
+
+3. **Or Run Separately**
+   ```bash
+   # Frontend only
+   npm run dev
+   
+   # Backend only
+   npm run server:dev
+   ```
+
+### Backend Setup
+
+1. **Create Supabase Project**
+   - Sign up at [supabase.com](https://supabase.com)
+   - Create a new project
+   - Note your project URL and service role key
+
+2. **Configure Environment**
+   ```bash
+   cd server
+   cp .env.example .env
+   # Edit .env with your Supabase credentials
+   ```
+
+3. **Run Database Migration**
+   - In Supabase dashboard, go to SQL Editor
+   - Copy and run `server/migrations/001_create_tables.sql`
+
+4. **Create First Admin User**
+   - See `server/README.md` for detailed instructions
+
+5. **Start Backend**
+   ```bash
+   cd server
+   npm run dev
+   ```
+
+### Frontend Setup
+
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Configure API URL** (if needed)
+   - Default is `http://localhost:4000/api`
+   - Update `js/api-client.js` or set `window.__SSA_API_BASE__` in HTML files
+
+3. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
+
+## Project Structure
 
 ```
-Show-Stoppers-Academy/
-├── index.html              # Homepage
-├── about.html              # About page
-├── contact.html            # Contact page
-├── registration.html       # Program registration
-├── pricing.html            # Donation page
-├── faq.html               # FAQ page
-├── src/
-│   ├── components/        # TypeScript components
-│   │   ├── Navigation.ts
-│   │   ├── Animations.ts
-│   │   └── ContactForm.ts
-│   ├── types/            # TypeScript type definitions
-│   │   └── index.ts
-│   └── utils/            # Utility functions
-│       └── index.ts
-├── assets/               # Images and media files
-├── google-apps-script.js # Google Sheets integration
-├── tailwind.config.js    # Tailwind configuration
-├── tsconfig.json         # TypeScript configuration
-├── vite.config.ts        # Vite build configuration
-└── package.json          # Dependencies and scripts
+├── server/                 # Backend API (Express + TypeScript)
+│   ├── src/
+│   │   ├── controllers/   # Request handlers
+│   │   ├── middleware/    # Auth & error handling
+│   │   ├── routes/        # API routes
+│   │   ├── utils/         # Helper functions
+│   │   └── config.ts      # Configuration
+│   ├── migrations/        # Database migrations
+│   └── README.md          # Backend documentation
+├── js/                    # Frontend JavaScript utilities
+│   └── api-client.js      # API client for tutoring portal
+├── css/                   # Stylesheets
+├── *.html                 # Website pages
+└── tutoring-*.html        # Tutoring portal pages
 ```
 
-## 🛠️ Setup Instructions
+## Available Scripts
 
-### Prerequisites
+### Root Level
+- `npm run dev` - Start frontend dev server
+- `npm run build` - Build frontend for production
+- `npm run server:dev` - Start backend dev server
+- `npm run server:build` - Build backend for production
+- `npm run server:start` - Start production backend
+- `npm run dev:all` - Start both frontend and backend together
+- `npm run install:all` - Install dependencies for both projects
 
-- Node.js (v16 or higher)
-- npm or yarn
-- Google account (for form submissions)
+### Backend (from `server/` directory)
+- `npm run dev` - Start API in watch mode
+- `npm run build` - Compile TypeScript
+- `npm start` - Run production build
 
-### 1. Install Dependencies
+## Tutoring Hours Platform
 
-```bash
-npm install
-```
+The tutoring hours platform allows:
+- **Tutors** and **Students** to submit tutoring session logs
+- **Administrators** to review and approve/reject submissions
+- **All users** to view their own submission history
+- **Audit logging** for all status changes
 
-### 2. Google Sheets Integration Setup
+### Access Points
+- Login: `/tutoring-login.html`
+- Dashboard: `/tutoring-dashboard.html` (requires login)
 
-#### Step 1: Create Google Sheet
-1. Go to [Google Sheets](https://sheets.google.com)
-2. Create a new spreadsheet
-3. Name it "Show Stoppers Academy Submissions"
-4. Copy the Sheet ID from the URL
+## Deployment
 
-#### Step 2: Create Google Apps Script
-1. Go to [Google Apps Script](https://script.google.com)
-2. Create a new project
-3. Copy the contents of `google-apps-script.js` into the script editor
-4. Replace `YOUR_GOOGLE_SHEET_ID` with your actual Sheet ID
-5. Replace `your-email@showstoppersacademy.com` with your email
-6. Save the project
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions for both frontend and backend.
 
-#### Step 3: Deploy the Script
-1. Click "Deploy" > "New Deployment"
-2. Choose "Web app" as the type
-3. Set execute as "Me"
-4. Set access to "Anyone"
-5. Click "Deploy"
-6. Copy the web app URL
+## Documentation
 
-#### Step 4: Update Form URLs
-1. Open `src/components/ContactForm.ts`
-2. Replace `YOUR_SCRIPT_ID` with your actual script ID from the URL
-3. Update the Google Sheets URL in your forms
+- **Backend API**: See `server/README.md`
+- **Deployment Guide**: See `DEPLOYMENT.md`
+- **Database Schema**: See `server/migrations/001_create_tables.sql`
 
-### 3. Development Server
+## License
 
-```bash
-npm run dev
-```
-
-This will start the development server at `http://localhost:3000`
-
-### 4. Build for Production
-
-```bash
-npm run build
-```
-
-This creates an optimized build in the `dist` folder.
-
-## 🎨 Customization
-
-### Colors and Branding
-
-Edit `tailwind.config.js` to customize colors:
-
-```javascript
-theme: {
-  extend: {
-    colors: {
-      primary: {
-        // Your brand colors
-      },
-      secondary: {
-        // Your accent colors
-      }
-    }
-  }
-}
-```
-
-### Content Updates
-
-- **Homepage**: Edit `index.html`
-- **About Page**: Edit `about.html`
-- **Contact Info**: Update contact details in all pages
-- **Programs**: Modify program information in relevant sections
-
-### Images
-
-Replace placeholder images in the `assets/` folder:
-- Logo and branding images
-- Gallery photos
-- Hero section images
-
-## 📱 Responsive Design
-
-The website is fully responsive with breakpoints:
-- Mobile: < 768px
-- Tablet: 768px - 1024px
-- Desktop: > 1024px
-
-## 🔧 Form Functionality
-
-### Contact Form
-- Real-time validation
-- Email notifications
-- Google Sheets integration
-- Spam protection
-
-### Registration Form
-- Multi-step validation
-- Program selection
-- Medical information capture
-- Terms and conditions
-
-## 🚀 Performance Features
-
-- **Lazy Loading**: Images load as needed
-- **Code Splitting**: Optimized bundle sizes
-- **Caching**: Browser caching for faster loads
-- **Compression**: Minified CSS and JavaScript
-- **CDN Ready**: Can be deployed to any CDN
-
-## 📊 Analytics Integration
-
-The website is ready for analytics integration:
-- Google Analytics 4
-- Facebook Pixel
-- Custom event tracking
-
-## 🔒 Security Features
-
-- Form validation and sanitization
-- CSRF protection
-- Secure data transmission
-- Privacy policy compliance
-
-## 📈 SEO Optimization
-
-- Meta tags and descriptions
-- Structured data (JSON-LD)
-- Open Graph tags
-- Twitter Cards
-- Sitemap ready
-- Fast loading times
-
-## 🎯 Accessibility
-
-- WCAG 2.1 compliant
-- Keyboard navigation
-- Screen reader friendly
-- High contrast ratios
-- Alt text for images
-
-## 🌐 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
-
-## 📞 Support
-
-For technical support or questions:
-- Email: tech@showstoppersacademy.com
-- Phone: (555) 123-4567
-
-## 📄 License
-
-This project is proprietary to Show Stoppers Academy. All rights reserved.
-
-## 🔄 Updates and Maintenance
-
-### Regular Updates
-- Content updates as needed
-- Security patches
-- Performance optimizations
-- New feature additions
-
-### Backup Strategy
-- Regular Google Sheets backups
-- Website code version control
-- Image and asset backups
-
----
-
-**Built with ❤️ for Show Stoppers Academy**
-
-*Empowering youth for a brighter tomorrow through sports and education.*
+MIT

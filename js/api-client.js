@@ -13,26 +13,8 @@ function getApiBase() {
   
   // Auto-detect: if running on HTTPS (production), use production API
   if (window.location.protocol === 'https:') {
-    // Production API URL - UPDATE THIS with your deployed backend URL
-    // Deploy your backend to: Render, Railway, Fly.io, or your own server
-    // Then update the URL below (e.g., 'https://ssa-tutoring-api.onrender.com/api')
-    // 
-    // For now, this points to a placeholder - you must deploy the backend and update this
-    const hostname = window.location.hostname;
-    
-    // If using GitHub Pages with custom domain (showstoppersacademy.org)
-    if (hostname === 'showstoppersacademy.org' || hostname.includes('showstoppersacademy')) {
-      return 'https://api.showstoppersacademy.org/api'; // Update with your backend URL
-    }
-    
-    // If using GitHub Pages default domain (username.github.io)
-    if (hostname.includes('github.io')) {
-      // Default: use a Render/Railway backend URL - UPDATE THIS
-      return 'https://ssa-tutoring-api.onrender.com/api'; // Update with your backend URL
-    }
-    
-    // Fallback for any other HTTPS domain
-    return 'https://api.showstoppersacademy.org/api'; // Update with your backend URL
+    // Production Railway backend URL
+    return 'https://show-stoppers-academy-production.up.railway.app/api';
   }
   
   // Development: use localhost

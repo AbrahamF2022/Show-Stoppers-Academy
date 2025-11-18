@@ -8,7 +8,12 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "server:dev": "cd server && npm run dev",
+    "server:build": "cd server && npm run build",
+    "server:start": "cd server && npm start",
+    "dev:all": "concurrently \"npm run dev\" \"npm run server:dev\"",
+    "install:all": "npm install && cd server && npm install"
   },
   "keywords": [
     "youth development",
@@ -26,6 +31,7 @@
     "@typescript-eslint/parser": "^6.13.0",
     "@vitejs/plugin-legacy": "^5.2.0",
     "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
     "eslint": "^8.54.0",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",

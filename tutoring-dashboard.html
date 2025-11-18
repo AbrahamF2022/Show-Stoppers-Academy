@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tutoring Hours Dashboard - Submit and review Show Stoppers Academy tutoring sessions.">
+    <title>Tutoring Hours Dashboard - Show Stoppers Academy</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5',
+                            400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c',
+                            800: '#991b1b', 900: '#7f1d1d', 950: '#450a0a'
+                        },
+                        secondary: {
+                            50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74',
+                            400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c',
+                            800: '#9a3412', 900: '#7c2d12', 950: '#431407'
+                        },
+                        accent: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a', 950: '#020617'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Poppins', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-900 bg-gray-50">
+    <nav class="bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/index.html" class="flex items-center space-x-3">
+                    <img src="PIC.png" alt="Show Stoppers Academy" class="w-10 h-10 rounded-full object-cover shadow">
+                    <span class="font-display font-bold text-xl text-gray-900">Show Stoppers Academy</span>
+                </a>
+                <div class="flex items-center space-x-4">
+                    <span id="user-info" class="text-sm text-gray-600 hidden"></span>
+                    <a href="/tutoring-login.html" class="text-sm text-primary-600 hover:text-primary-700">Back to Login</a>
+                    <button id="dashboard-logout" class="text-sm font-semibold text-gray-700 hover:text-primary-600">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+        <section class="bg-white shadow-xl rounded-3xl p-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+                <div>
+                    <p class="text-sm font-semibold text-primary-600 uppercase tracking-wide">Tutoring Hours</p>
+                    <h1 class="text-3xl font-display font-bold text-gray-900">Session Submission</h1>
+                    <p class="text-gray-600 mt-2" id="form-subtitle">Use this form to log completed sessions.</p>
+                </div>
+                <div class="flex items-center space-x-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full" id="role-pill">
+                    <span class="text-sm font-semibold" id="role-pill-text"></span>
+                </div>
+            </div>
+
+            <form id="session-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label for="session-student" class="text-sm font-semibold text-gray-700">Student Name</label>
+                    <input id="session-student" name="studentName" type="text" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                </div>
+                <div class="space-y-2">
+                    <label for="session-tutor" class="text-sm font-semibold text-gray-700">Tutor Name</label>
+                    <input id="session-tutor" name="tutorName" type="text" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                </div>
+                <div class="space-y-2">
+                    <label for="session-subject" class="text-sm font-semibold text-gray-700">Subject</label>
+                    <input id="session-subject" name="subject" type="text" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                </div>
+                <div class="space-y-2">
+                    <label for="session-notes" class="text-sm font-semibold text-gray-700">Session Notes</label>
+                    <textarea id="session-notes" name="notes" rows="1"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-y"
+                              placeholder="Key topics covered, achievements, or follow-ups"></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label for="session-start" class="text-sm font-semibold text-gray-700">Start Time</label>
+                    <input id="session-start" name="startTime" type="datetime-local" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                </div>
+                <div class="space-y-2">
+                    <label for="session-end" class="text-sm font-semibold text-gray-700">End Time</label>
+                    <input id="session-end" name="endTime" type="datetime-local" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                </div>
+                <div class="md:col-span-2 flex flex-col sm:flex-row gap-4">
+                    <button type="submit" class="flex-1 bg-primary-600 text-white py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors" id="submit-session">
+                        Submit Session
+                    </button>
+                    <button type="button" class="flex-1 border-2 border-gray-300 text-gray-700 py-3 rounded-xl font-semibold hover:border-gray-400 transition-colors" id="reset-form">
+                        Reset Form
+                    </button>
+                </div>
+                <p id="session-message" class="md:col-span-2 text-sm hidden"></p>
+            </form>
+        </section>
+
+        <section class="space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-gray-900">Session History</h2>
+                    <p class="text-gray-600">Track submitted sessions and review approval status.</p>
+                </div>
+                <div class="flex items-center gap-2" id="admin-filter" hidden>
+                    <label for="status-filter" class="text-sm font-semibold text-gray-700">Filter Status</label>
+                    <select id="status-filter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm">
+                        <option value="all">All</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bg-white shadow-xl rounded-3xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Student</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Tutor</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Subject</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Start</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">End</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sessions-body" class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td colspan="7" class="px-6 py-8 text-center text-sm text-gray-500">Loading sessions...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="audit-panel" class="hidden">
+            <div class="bg-white shadow-xl rounded-3xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-display font-bold text-gray-900">Status History</h2>
+                        <p class="text-gray-600" id="audit-session-label"></p>
+                    </div>
+                    <button id="close-audit" class="text-sm text-gray-600 hover:text-primary-600">Close</button>
+                </div>
+                <div id="audit-content" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-accent-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                </div>
+                <span class="font-display font-bold text-xl">Show Stoppers Academy</span>
+            </div>
+            <p class="text-gray-400">&copy; 2024 Show Stoppers Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.__SSA_API_BASE__ = window.__SSA_API_BASE__ || (localStorage.getItem('ssaApiBase') || 'http://localhost:4000/api');
+    </script>
+    <script type="module">
+        import { apiFetch, getCurrentUser, logout } from './js/api-client.js';
+
+        const userInfo = document.getElementById('user-info');
+        const rolePillText = document.getElementById('role-pill-text');
+        const formSubtitle = document.getElementById('form-subtitle');
+        const sessionForm = document.getElementById('session-form');
+        const submitButton = document.getElementById('submit-session');
+        const resetButton = document.getElementById('reset-form');
+        const sessionMessage = document.getElementById('session-message');
+        const sessionsBody = document.getElementById('sessions-body');
+        const statusFilter = document.getElementById('status-filter');
+        const adminFilter = document.getElementById('admin-filter');
+        const rolePill = document.getElementById('role-pill');
+        const auditPanel = document.getElementById('audit-panel');
+        const auditContent = document.getElementById('audit-content');
+        const auditSessionLabel = document.getElementById('audit-session-label');
+        const closeAudit = document.getElementById('close-audit');
+        const logoutButton = document.getElementById('dashboard-logout');
+
+        let currentUser = null;
+        let sessions = [];
+
+        function setMessage(element, message, tone = 'info') {
+            if (!element) return;
+            if (!message) {
+                element.classList.add('hidden');
+                element.textContent = '';
+                return;
+            }
+            const toneClass = tone === 'error' ? 'text-red-600' : tone === 'success' ? 'text-green-600' : 'text-gray-600';
+            element.className = `text-sm ${toneClass}`;
+            element.textContent = message;
+            element.classList.remove('hidden');
+        }
+
+        function formatDate(dateStr) {
+            return new Date(dateStr).toLocaleString();
+        }
+
+        function canApprove() {
+            return currentUser?.role === 'admin';
+        }
+
+        function renderSessions() {
+            const filterValue = statusFilter?.value || 'all';
+            if (!sessions.length) {
+                sessionsBody.innerHTML = '<tr><td colspan="7" class="px-6 py-8 text-center text-sm text-gray-500">No sessions recorded yet.</td></tr>';
+                return;
+            }
+
+            const rows = sessions
+                .filter((session) => (filterValue === 'all' ? true : session.approval_status === filterValue))
+                .map((session) => {
+                    const statusColor = session.approval_status === 'approved'
+                        ? 'bg-green-100 text-green-800'
+                        : session.approval_status === 'rejected'
+                            ? 'bg-red-100 text-red-800'
+                            : 'bg-yellow-100 text-yellow-800';
+                    const actions = canApprove()
+                        ? `<div class="flex flex-wrap items-center gap-2">
+                                <button data-action="approve" data-id="${session.id}" class="px-3 py-1 text-xs rounded-lg bg-green-600 text-white hover:bg-green-700">Approve</button>
+                                <button data-action="reject" data-id="${session.id}" class="px-3 py-1 text-xs rounded-lg bg-red-600 text-white hover:bg-red-700">Reject</button>
+                                <button data-action="audit" data-id="${session.id}" class="px-3 py-1 text-xs rounded-lg border border-gray-300 text-gray-700 hover:border-primary-400">View History</button>
+                           </div>`
+                        : '<span class="text-xs text-gray-400">Review pending</span>';
+
+                    return `<tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${session.student_name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${session.tutor_name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${session.subject}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(session.start_time)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(session.end_time)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full ${statusColor}">${session.approval_status}</span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">${actions}</td>
+                    </tr>`;
+                })
+                .join('');
+
+            sessionsBody.innerHTML = rows;
+        }
+
+        async function fetchSessions() {
+            try {
+                const response = await apiFetch('/sessions');
+                sessions = response.sessions || [];
+                renderSessions();
+            } catch (error) {
+                setMessage(sessionMessage, error.message, 'error');
+            }
+        }
+
+        async function submitSessionForm(event) {
+            event.preventDefault();
+            if (!currentUser) return;
+
+            const formData = new FormData(sessionForm);
+            const payload = {
+                studentName: String(formData.get('studentName') || '').trim(),
+                tutorName: String(formData.get('tutorName') || '').trim(),
+                subject: String(formData.get('subject') || '').trim(),
+                startTime: new Date(String(formData.get('startTime'))).toISOString(),
+                endTime: new Date(String(formData.get('endTime'))).toISOString(),
+                notes: String(formData.get('notes') || '').trim() || undefined,
+            };
+
+            if (!payload.studentName || !payload.tutorName) {
+                setMessage(sessionMessage, 'Tutor and student names are required.', 'error');
+                return;
+            }
+
+            submitButton.setAttribute('disabled', 'true');
+            submitButton.textContent = 'Submitting...';
+
+            try {
+                await apiFetch('/sessions', {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                });
+                setMessage(sessionMessage, 'Session submitted successfully and pending approval.', 'success');
+                sessionForm.reset();
+                await fetchSessions();
+            } catch (error) {
+                setMessage(sessionMessage, error.message, 'error');
+            } finally {
+                submitButton.removeAttribute('disabled');
+                submitButton.textContent = 'Submit Session';
+            }
+        }
+
+        function resetSessionForm() {
+            sessionForm.reset();
+            setMessage(sessionMessage, 'Form cleared.', 'info');
+        }
+
+        async function handleSessionAction(event) {
+            const button = event.target.closest('button[data-action]');
+            if (!button) return;
+
+            const action = button.dataset.action;
+            const sessionId = button.dataset.id;
+
+            if (action === 'audit') {
+                await showAudit(sessionId);
+                return;
+            }
+
+            if (!canApprove()) return;
+
+            button.setAttribute('disabled', 'true');
+            try {
+                await apiFetch(`/sessions/${sessionId}/status`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({ status: action === 'approve' ? 'approved' : 'rejected' }),
+                });
+                await fetchSessions();
+            } catch (error) {
+                setMessage(sessionMessage, error.message, 'error');
+            } finally {
+                button.removeAttribute('disabled');
+            }
+        }
+
+        async function showAudit(sessionId) {
+            try {
+                const response = await apiFetch(`/sessions/${sessionId}/audits`);
+                const audits = response.audits || [];
+                auditSessionLabel.textContent = `Session ID: ${sessionId}`;
+                if (audits.length === 0) {
+                    auditContent.innerHTML = '<p class="text-sm text-gray-500">No status changes recorded yet.</p>';
+                } else {
+                    auditContent.innerHTML = audits
+                        .map((audit) => `
+                            <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                <p class="text-sm text-gray-900 font-semibold">${audit.old_status} → ${audit.new_status}</p>
+                                <p class="text-xs text-gray-500">Updated on ${formatDate(audit.created_at)}</p>
+                                ${audit.changed_by ? `<p class="text-xs text-gray-400">Changed by user ${audit.changed_by}</p>` : ''}
+                            </div>
+                        `)
+                        .join('');
+                }
+                auditPanel.classList.remove('hidden');
+                window.scrollTo({ top: auditPanel.offsetTop - 100, behavior: 'smooth' });
+            } catch (error) {
+                setMessage(sessionMessage, error.message, 'error');
+            }
+        }
+
+        closeAudit?.addEventListener('click', () => {
+            auditPanel.classList.add('hidden');
+        });
+
+        statusFilter?.addEventListener('change', renderSessions);
+        sessionForm?.addEventListener('submit', submitSessionForm);
+        resetButton?.addEventListener('click', resetSessionForm);
+        sessionsBody?.addEventListener('click', handleSessionAction);
+
+        logoutButton?.addEventListener('click', () => {
+            logout();
+            window.location.href = '/tutoring-login.html';
+        });
+
+        async function init() {
+            try {
+                const { user } = await getCurrentUser();
+                currentUser = user;
+                rolePillText.textContent = `${user.fullName} · ${user.role.toUpperCase()}`;
+                rolePill.classList.remove('hidden');
+                userInfo.textContent = `${user.fullName} (${user.role})`;
+                userInfo.classList.remove('hidden');
+
+                if (user.role === 'tutor') {
+                    formSubtitle.textContent = 'Please confirm the student name and session details before submitting.';
+                    document.getElementById('session-tutor').value = user.fullName;
+                } else if (user.role === 'student') {
+                    formSubtitle.textContent = 'Log your tutoring sessions. Your coordinator will review them.';
+                    document.getElementById('session-student').value = user.fullName;
+                } else if (user.role === 'admin') {
+                    formSubtitle.textContent = 'Review pending sessions below and manage approvals in real time.';
+                    adminFilter.hidden = false;
+                }
+
+                // Tutors and students shouldn't have to enter their own name twice
+                if (user.role === 'tutor') {
+                    document.getElementById('session-tutor').setAttribute('readonly', 'true');
+                }
+                if (user.role === 'student') {
+                    document.getElementById('session-student').setAttribute('readonly', 'true');
+                }
+
+                await fetchSessions();
+            } catch (error) {
+                window.location.href = '/tutoring-login.html';
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>

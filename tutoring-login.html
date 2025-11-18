@@ -95,118 +95,85 @@
                 <p class="text-gray-600">Login to report and track tutoring hours</p>
             </div>
 
-            <!-- Login Form -->
-            <div class="bg-white rounded-2xl shadow-xl p-8" x-data="{ loginForm: true, hoursForm: false, tutorId: '', password: '', showHours: false }">
-                <!-- Login Form -->
-                <div x-show="loginForm" x-transition>
-                    <form @submit.prevent="loginForm = false; hoursForm = true" class="space-y-6">
+            <!-- Authentication Card -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 space-y-8" id="auth-card">
+                <!-- Login view -->
+                <div id="login-view" class="space-y-6">
+                    <form id="login-form" class="space-y-6">
                         <div>
-                            <label for="tutorId" class="block text-sm font-semibold text-gray-700 mb-2">Tutor ID</label>
-                            <input type="text" id="tutorId" x-model="tutorId" required 
+                            <label for="login-email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                            <input type="email" id="login-email" name="email" required autocomplete="email"
                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
                         </div>
-                        
                         <div>
-                            <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
-                            <input type="password" id="password" x-model="password" required 
+                            <label for="login-password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                            <input type="password" id="login-password" name="password" required autocomplete="current-password"
                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
                         </div>
-                        
-                        <button type="submit" 
+                        <button type="submit"
                                 class="w-full bg-primary-600 text-white py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-                            Login
+                            Sign In
                         </button>
                     </form>
+                    <p id="login-error" class="text-sm text-red-600 hidden"></p>
+                    <p class="text-sm text-gray-500">Need an account? Ask an admin to register you after signing in.</p>
                 </div>
 
-                <!-- Hours Reporting Form -->
-                <div x-show="hoursForm" x-transition>
-                    <div class="mb-6">
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Report Tutoring Hours</h3>
-                        <p class="text-gray-600">Log your tutoring sessions and track progress</p>
+                <!-- Dashboard view -->
+                <div id="dashboard-view" class="space-y-8 hidden">
+                    <div class="space-y-2">
+                        <p class="text-sm font-semibold text-primary-600 uppercase tracking-wide">Signed in</p>
+                        <h3 class="text-2xl font-display font-bold text-gray-900" id="welcome-message">Welcome back!</h3>
+                        <p class="text-gray-600" id="role-label"></p>
                     </div>
-                    
-                    <form @submit.prevent="showHours = true" class="space-y-6">
-                        <div>
-                            <label for="studentName" class="block text-sm font-semibold text-gray-700 mb-2">Student Name</label>
-                            <input type="text" id="studentName" required 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
-                            <select id="subject" required 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
-                                <option value="">Select subject</option>
-                                <option value="math">Mathematics</option>
-                                <option value="science">Science</option>
-                                <option value="english">English</option>
-                                <option value="history">History</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label for="duration" class="block text-sm font-semibold text-gray-700 mb-2">Duration (hours)</label>
-                            <input type="number" id="duration" step="0.5" min="0.5" max="8" required 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label for="notes" class="block text-sm font-semibold text-gray-700 mb-2">Session Notes</label>
-                            <textarea id="notes" rows="3" 
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-none"
-                                      placeholder="Brief description of what was covered..."></textarea>
-                        </div>
-                        
-                        <div class="flex space-x-4">
-                            <button type="button" @click="loginForm = true; hoursForm = false" 
-                                    class="flex-1 border-2 border-gray-300 text-gray-700 py-3 rounded-xl font-semibold hover:border-gray-400 transition-colors">
-                                Back
-                            </button>
-                            <button type="submit" 
-                                    class="flex-1 bg-primary-600 text-white py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors">
-                                Submit Hours
-                            </button>
-                        </div>
-                    </form>
-                </div>
 
-                <!-- Hours Summary -->
-                <div x-show="showHours" x-transition>
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Hours Submitted Successfully!</h3>
-                        <p class="text-gray-600">Your tutoring hours have been recorded and logged.</p>
-                    </div>
-                    
-                    <div class="bg-gray-50 rounded-xl p-6 mb-6">
-                        <h4 class="font-semibold text-gray-900 mb-4">This Month's Summary</h4>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div>
-                                <div class="text-2xl font-bold text-primary-600">24</div>
-                                <div class="text-sm text-gray-600">Hours Logged</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-secondary-600">12</div>
-                                <div class="text-sm text-gray-600">Students Helped</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-4">
-                        <button @click="showHours = false; hoursForm = true" 
-                                class="flex-1 border-2 border-gray-300 text-gray-700 py-3 rounded-xl font-semibold hover:border-gray-400 transition-colors">
-                            Log More Hours
+                    <div class="space-y-4">
+                        <a href="/tutoring-dashboard.html"
+                           class="w-full inline-flex items-center justify-center px-4 py-3 bg-secondary-600 text-white rounded-xl font-semibold hover:bg-secondary-700 transition-colors">
+                            Open Hours Dashboard
+                        </a>
+                        <button id="logout-button"
+                                class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-xl font-semibold hover:border-gray-400 transition-colors">
+                            Sign Out
                         </button>
-                        <button @click="loginForm = true; hoursForm = false; showHours = false" 
-                                class="flex-1 bg-primary-600 text-white py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors">
-                            New Login
-                        </button>
+                    </div>
+
+                    <div id="admin-actions" class="space-y-6 hidden">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Register a New User</h4>
+                            <p class="text-sm text-gray-600 mb-4">Admins can create tutor or student accounts below.</p>
+                            <form id="register-form" class="space-y-4">
+                                <div class="grid grid-cols-1 gap-4">
+                                    <div>
+                                        <label for="register-fullname" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                                        <input type="text" id="register-fullname" name="fullName" required
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                    </div>
+                                    <div>
+                                        <label for="register-email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                                        <input type="email" id="register-email" name="email" required
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                    </div>
+                                    <div>
+                                        <label for="register-password" class="block text-sm font-semibold text-gray-700 mb-2">Temporary Password</label>
+                                        <input type="password" id="register-password" name="password" minlength="8" required
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                    </div>
+                                    <div>
+                                        <label for="register-role" class="block text-sm font-semibold text-gray-700 mb-2">Role</label>
+                                        <select id="register-role" name="role" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                            <option value="tutor">Tutor</option>
+                                            <option value="student">Student</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit"
+                                        class="w-full bg-primary-600 text-white py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors">
+                                    Create Account
+                                </button>
+                            </form>
+                            <p id="register-message" class="text-sm mt-2 hidden"></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -215,8 +182,8 @@
             <div class="bg-white rounded-xl p-6 shadow-lg">
                 <h3 class="font-semibold text-gray-900 mb-4">Need Help?</h3>
                 <div class="space-y-3 text-sm text-gray-600">
-                    <p>• Forgot your login credentials? Contact your program coordinator</p>
-                    <p>• Having trouble logging hours? Check your internet connection</p>
+                    <p>• Forgot your password? Contact your program coordinator.</p>
+                    <p>• Having trouble signing in? Confirm you are using the correct email.</p>
                     <p>• Questions about the tutoring program? <a href="/contact.html" class="text-primary-600 hover:text-primary-700">Contact us</a></p>
                 </div>
             </div>
@@ -238,11 +205,123 @@
         </div>
     </footer>
 
-    <!-- TypeScript Components -->
+    <script>
+        window.__SSA_API_BASE__ = window.__SSA_API_BASE__ || (localStorage.getItem('ssaApiBase') || 'http://localhost:4000/api');
+    </script>
     <script type="module">
-        import { throttle } from './src/utils/index.js';
+        import { apiFetch, getCurrentUser, logout, setToken } from './js/api-client.js';
 
-        console.log('Tutoring portal loaded successfully! 🚀');
+        const loginView = document.getElementById('login-view');
+        const dashboardView = document.getElementById('dashboard-view');
+        const loginForm = document.getElementById('login-form');
+        const loginError = document.getElementById('login-error');
+        const welcomeMessage = document.getElementById('welcome-message');
+        const roleLabel = document.getElementById('role-label');
+        const adminActions = document.getElementById('admin-actions');
+        const registerForm = document.getElementById('register-form');
+        const registerMessage = document.getElementById('register-message');
+        const logoutButton = document.getElementById('logout-button');
+
+        function setVisible(element, visible) {
+            if (!element) return;
+            element.classList.toggle('hidden', !visible);
+        }
+
+        function showLogin(error) {
+            setVisible(loginView, true);
+            setVisible(dashboardView, false);
+            if (error) {
+                loginError.textContent = error;
+                setVisible(loginError, true);
+            } else {
+                loginError.textContent = '';
+                setVisible(loginError, false);
+            }
+        }
+
+        function formatRole(role) {
+            return role.charAt(0).toUpperCase() + role.slice(1);
+        }
+
+        async function refreshUser() {
+            try {
+                const { user } = await getCurrentUser();
+                welcomeMessage.textContent = `Welcome back, ${user.fullName}!`;
+                roleLabel.textContent = `You are signed in as ${formatRole(user.role)}.`;
+                setVisible(loginView, false);
+                setVisible(dashboardView, true);
+                setVisible(adminActions, user.role === 'admin');
+                registerMessage.textContent = '';
+                setVisible(registerMessage, false);
+            } catch {
+                showLogin();
+            }
+        }
+
+        loginForm?.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(loginForm);
+            const email = String(formData.get('email') || '').trim();
+            const password = String(formData.get('password') || '').trim();
+
+            loginForm.querySelector('button')?.setAttribute('disabled', 'true');
+            loginForm.querySelector('button').textContent = 'Signing In...';
+
+            try {
+                const result = await apiFetch('/auth/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password }),
+                });
+                setToken(result.token);
+                await refreshUser();
+                loginForm.reset();
+            } catch (error) {
+                showLogin(error.message);
+            } finally {
+                loginForm.querySelector('button')?.removeAttribute('disabled');
+                loginForm.querySelector('button').textContent = 'Sign In';
+            }
+        });
+
+        registerForm?.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(registerForm);
+            const payload = {
+                fullName: String(formData.get('fullName') || '').trim(),
+                email: String(formData.get('email') || '').trim(),
+                password: String(formData.get('password') || '').trim(),
+                role: String(formData.get('role') || 'tutor'),
+            };
+
+            registerForm.querySelector('button')?.setAttribute('disabled', 'true');
+            registerForm.querySelector('button').textContent = 'Creating Account...';
+
+            try {
+                await apiFetch('/auth/register', {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                });
+                registerMessage.textContent = `Account created for ${payload.fullName}. They should log in and change their password immediately.`;
+                registerMessage.className = 'text-sm text-green-600 mt-2';
+                setVisible(registerMessage, true);
+                registerForm.reset();
+            } catch (error) {
+                registerMessage.textContent = error.message;
+                registerMessage.className = 'text-sm text-red-600 mt-2';
+                setVisible(registerMessage, true);
+            } finally {
+                registerForm.querySelector('button')?.removeAttribute('disabled');
+                registerForm.querySelector('button').textContent = 'Create Account';
+            }
+        });
+
+        logoutButton?.addEventListener('click', () => {
+            logout();
+            showLogin();
+        });
+
+        // Attempt to resume session on load
+        refreshUser();
     </script>
 </body>
 </html>

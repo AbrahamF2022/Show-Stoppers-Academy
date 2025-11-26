@@ -66,18 +66,18 @@ Modern website for Show Stoppers Academy - Empowering youth through sports and e
 ### Frontend Setup
 
 1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 2. **Configure API URL** (if needed)
    - Default is `http://localhost:4000/api`
    - Update `js/api-client.js` or set `window.__SSA_API_BASE__` in HTML files
 
 3. **Start Development Server**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
 ## Project Structure
 

@@ -30,7 +30,7 @@ export class LayoutManager {
         icon: 'graduation-cap',
         children: [
           { label: 'Rise & Grind Development', href: '/registration.html' },
-          { label: 'Holiday Showcase', href: '/portfolio-overview.html' },
+          { label: 'Holiday Showcase Registration', href: '/programs.html#holiday-showcase-registration' },
           { label: 'Educational Workshops', href: '/faq.html' }
         ]
       },
@@ -200,7 +200,7 @@ export class LayoutManager {
               <h3 class="font-semibold text-lg mb-4">Programs</h3>
               <ul class="space-y-2">
                 <li><a href="/registration.html" class="text-gray-400 hover:text-white transition-colors">Rise & Grind Development</a></li>
-                <li><a href="/portfolio-overview.html" class="text-gray-400 hover:text-white transition-colors">Holiday Showcase</a></li>
+                <li><a href="/programs.html#holiday-showcase-registration" class="text-gray-400 hover:text-white transition-colors">Holiday Showcase Registration</a></li>
                 <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Educational Workshops</a></li>
                 <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Community Events</a></li>
               </ul>

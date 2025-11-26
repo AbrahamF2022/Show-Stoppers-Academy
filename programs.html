@@ -105,8 +105,8 @@
                                     <a href="#rise-grind" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
                                         Rise &amp; Grind Player Development
                                     </a>
-                                    <a href="#holiday-showcase" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
-                                        Holiday Showcase
+                                    <a href="#holiday-showcase-registration" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                                        Holiday Showcase Registration
                                     </a>
                                     <a href="#education" class="block px-6 py-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
                                         Educational Programs
@@ -144,7 +144,7 @@
                     <div class="px-4 py-3 space-y-2 text-sm text-gray-700">
                         <a href="#thanksgiving-camp" class="block hover:text-primary-600 font-medium">• Thanksgiving Camp</a>
                         <a href="#rise-grind" class="block hover:text-primary-600 font-medium">• Rise &amp; Grind Player Development</a>
-                        <a href="#holiday-showcase" class="block hover:text-primary-600 font-medium">• Holiday Showcase</a>
+                        <a href="#holiday-showcase-registration" class="block hover:text-primary-600 font-medium">• Holiday Showcase Registration</a>
                         <a href="#education" class="block hover:text-primary-600 font-medium">• Educational Programs</a>
                         <a href="/registration.html" class="block hover:text-primary-600 font-medium">• Program Registration</a>
                     </div>
@@ -174,20 +174,66 @@
         </div>
     </section>
 
-    <!-- Thanksgiving Camp Section -->
-    <section id="thanksgiving-camp" class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+    <!-- Unified Registration Section with Tabs -->
+    <section id="holiday-showcase-registration" x-data="{ activeTab: (window.location.hash === '#thanksgiving-camp' || window.location.hash === '#holiday-showcase-registration') ? (window.location.hash === '#thanksgiving-camp' ? 'thanksgiving' : 'holiday') : 'holiday' }" x-init="
+        const hash = window.location.hash;
+        if (hash === '#thanksgiving-camp') {
+            activeTab = 'thanksgiving';
+            setTimeout(() => document.getElementById('holiday-showcase-registration')?.scrollIntoView({ behavior: 'smooth' }), 100);
+        }
+        window.addEventListener('hashchange', () => {
+            const newHash = window.location.hash;
+            if (newHash === '#thanksgiving-camp') {
+                activeTab = 'thanksgiving';
+            } else if (newHash === '#holiday-showcase-registration') {
+                activeTab = 'holiday';
+            }
+        });
+    " class="pt-20 pb-12 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
         <div class="absolute inset-0 overflow-hidden">
             <div class="floating-element absolute w-36 h-36 bg-primary-100/25 rounded-full blur-3xl animate-float-2 top-10 right-16"></div>
             <div class="floating-element absolute w-28 h-28 bg-secondary-100/25 rounded-full blur-2xl animate-float-3 bottom-10 left-10"></div>
         </div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-10" data-animate="fade" data-delay="200">
-                <p class="text-primary-600 font-semibold tracking-wide mb-2 uppercase">Show Stoppers Academy Presents</p>
-                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-2">Our 1st Annual Thanksgiving Camp</h2>
-                <p class="text-lg text-gray-600">Keep your child active, learning, and having fun during the holiday break while preparing for the Thanksgiving feast.</p>
+            <!-- Tab Navigation -->
+            <div class="text-center mb-8" data-animate="fade" data-delay="200">
+                <div class="inline-flex bg-white rounded-full p-2 shadow-lg border border-gray-200 mb-6">
+                    <button @click="activeTab = 'holiday'; window.location.hash = '#holiday-showcase-registration'" :class="activeTab === 'holiday' ? 'bg-secondary-600 text-white' : 'text-gray-600 hover:text-gray-900'" class="px-6 py-3 rounded-full font-semibold transition-all duration-200">
+                        Holiday Showcase
+                    </button>
+                    <button @click="activeTab = 'thanksgiving'; window.location.hash = '#thanksgiving-camp'" :class="activeTab === 'thanksgiving' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:text-gray-900'" class="px-6 py-3 rounded-full font-semibold transition-all duration-200">
+                        Thanksgiving Camp
+                    </button>
+                </div>
+                <div x-show="activeTab === 'holiday'" x-transition>
+                    <p class="text-secondary-600 font-semibold tracking-wide mb-2 uppercase">Show Stoppers Academy Presents</p>
+                    <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-2">Holiday Showcase</h2>
+                    <p class="text-lg text-gray-600">Join us for special seasonal events and tournaments that bring our community together.</p>
+                </div>
+                <div x-show="activeTab === 'thanksgiving'" x-transition>
+                    <p class="text-primary-600 font-semibold tracking-wide mb-2 uppercase">Show Stoppers Academy Presents</p>
+                    <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-2">Our 1st Annual Thanksgiving Camp</h2>
+                    <p class="text-lg text-gray-600">Keep your child active, learning, and having fun during the holiday break while preparing for the Thanksgiving feast.</p>
+                </div>
             </div>
-            <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-2xl border border-primary-100/60" data-animate="fade" data-delay="300">
-                <div class="grid lg:grid-cols-2 gap-10">
+
+            <!-- Holiday Showcase Tab Content -->
+            <div x-show="activeTab === 'holiday'" x-transition class="bg-white rounded-3xl px-8 pt-8 pb-0 lg:px-12 lg:pt-12 lg:pb-0 shadow-2xl border border-secondary-100/60" data-animate="fade" data-delay="300">
+                <div>
+                    <h4 class="font-display font-semibold text-xl text-gray-900 mb-2">Registration Form</h4>
+                    <div class="rounded-2xl border-2 border-dashed border-secondary-300 bg-white/80 p-0 shadow-inner overflow-hidden mb-0" style="max-height: 1550px; overflow: hidden;">
+                        <div style="margin-bottom: -600px; overflow: hidden;">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfd3BFw7LZXn3viFnO-Afq9D_evzpLpFsaoBpldNfs8iHiu9Q/viewform?embedded=true" width="100%" height="2134" frameborder="0" marginheight="0" marginwidth="0" style="display: block;">
+                                Loading…
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thanksgiving Camp Tab Content -->
+            <div x-show="activeTab === 'thanksgiving'" x-transition class="bg-white rounded-3xl p-8 lg:p-12 shadow-2xl border border-primary-100/60" data-animate="fade" data-delay="300">
+                <div class="grid lg:grid-cols-2 gap-10 mb-10">
                     <div class="space-y-6">
                         <div class="p-5 rounded-2xl border border-gray-100 bg-white/60">
                             <h3 class="font-display font-semibold text-lg text-gray-900 mb-1">Dates</h3>
@@ -236,7 +282,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-10">
+                <div>
                     <h4 class="font-display font-semibold text-xl text-gray-900 mb-4">Registration Form</h4>
                     <div class="rounded-2xl border-2 border-dashed border-primary-300 bg-white/80 p-0 shadow-inner overflow-hidden">
                         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd5DrenIFtceoOQTYlUkNXJ1ZLS2PCBHtCFd3MZH7DACQ29fQ/viewform?embedded=true" width="100%" height="1120" frameborder="0" marginheight="0" marginwidth="0">
@@ -245,9 +291,14 @@
                     </div>
                 </div>
             </div>
-            <p class="text-center text-gray-700 mt-10 text-lg font-medium">Let’s stay active, sharpen our game, and give thanks together this holiday season.</p>
+            
+            <!-- Thanksgiving Camp Footer Message -->
+            <p x-show="activeTab === 'thanksgiving'" x-transition class="text-center text-gray-700 mt-8 text-lg font-medium">Let's stay active, sharpen our game, and give thanks together this holiday season.</p>
         </div>
     </section>
+
+    <!-- Keep Thanksgiving Camp ID for direct linking -->
+    <section id="thanksgiving-camp" class="hidden"></section>
 
     <!-- Programs Overview -->
     <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
@@ -387,8 +438,8 @@
                     
                     <div class="mt-8 pt-8 border-t border-gray-200">
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="/portfolio-overview.html" class="flex-1 bg-secondary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-secondary-700 transition-colors text-center">
-                                View Events
+                            <a href="#holiday-showcase-registration" class="flex-1 bg-secondary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-secondary-700 transition-colors text-center">
+                                Register Now
                             </a>
                             <a href="/contact.html" class="flex-1 border-2 border-secondary-600 text-secondary-600 px-6 py-3 rounded-xl font-semibold hover:bg-secondary-600 hover:text-white transition-colors text-center">
                                 Get Involved
@@ -588,7 +639,7 @@
                     <h3 class="font-semibold text-lg mb-4">Programs</h3>
                     <ul class="space-y-2">
                         <li><a href="/registration.html" class="text-gray-400 hover:text-white transition-colors">Rise & Grind Development</a></li>
-                        <li><a href="/portfolio-overview.html" class="text-gray-400 hover:text-white transition-colors">Holiday Showcase</a></li>
+                        <li><a href="/programs.html#holiday-showcase-registration" class="text-gray-400 hover:text-white transition-colors">Holiday Showcase Registration</a></li>
                         <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Educational Workshops</a></li>
                         <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">Community Events</a></li>
                     </ul>

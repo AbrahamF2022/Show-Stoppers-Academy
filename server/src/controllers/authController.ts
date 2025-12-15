@@ -74,7 +74,7 @@ export async function loginUser(req: Request, res: Response) {
   });
 }
 
-export function getCurrentUser(req: AuthenticatedRequest, res: Response) {
+export async function getCurrentUser(req: AuthenticatedRequest, res: Response) {
   if (!req.user) {
     throw new ApiError(401, 'Unauthorized');
   }

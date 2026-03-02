@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Admin | Show Stoppers Academy</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d' },
+            secondary: { 600:'#ea580c',700:'#c2410c' }
+          },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Poppins','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>[x-cloak]{display:none!important}</style>
+</head>
+<body class="font-sans text-gray-900 bg-gray-50 min-h-screen" x-data="adminApp()" x-init="init()">
+
+  <!-- ── Top Bar ─────────────────────────────────────────────────────────────── -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="/index.html" class="flex items-center gap-2">
+          <img src="PIC.png" alt="" class="w-8 h-8 rounded-full object-cover">
+          <span class="font-display font-bold text-gray-900 text-sm hidden sm:block">Show Stoppers Academy</span>
+        </a>
+        <span class="text-gray-300">|</span>
+        <span class="font-semibold text-primary-600 text-sm">Shop Admin</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/shop.html" target="_blank" class="text-sm text-gray-600 hover:text-primary-600 font-medium">View Store</a>
+        <a href="/tutoring-dashboard.html" class="text-sm text-gray-600 hover:text-primary-600 font-medium">Tutor Portal</a>
+        <button @click="logout()" class="text-sm text-red-500 hover:text-red-600 font-medium">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Auth Gate ──────────────────────────────────────────────────────────── -->
+  <div x-show="!authed" x-cloak class="flex items-center justify-center min-h-[calc(100vh-4rem)] p-6">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full max-w-sm">
+      <h1 class="font-display text-2xl font-bold text-gray-900 mb-1">Admin Login</h1>
+      <p class="text-gray-500 text-sm mb-6">Sign in to manage the shop</p>
+      <form @submit.prevent="login()">
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input x-model="loginEmail" type="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+        </div>
+        <div class="mb-5">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+          <input x-model="loginPassword" type="password" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+        </div>
+        <p x-show="loginError" x-text="loginError" class="text-red-500 text-sm mb-3"></p>
+        <button type="submit" :disabled="loginLoading" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2.5 rounded-lg transition-colors">
+          <span x-show="!loginLoading">Sign In</span>
+          <span x-show="loginLoading">Signing in…</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Main Admin UI ──────────────────────────────────────────────────────── -->
+  <div x-show="authed" x-cloak class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Tab nav -->
+    <div class="flex gap-1 bg-white rounded-xl shadow-sm border border-gray-100 p-1 mb-8 w-fit">
+      <button @click="activeTab = 'products'" :class="activeTab === 'products' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:text-gray-900'" class="px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Products</button>
+      <button @click="activeTab = 'discounts'; loadDiscounts()" :class="activeTab === 'discounts' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:text-gray-900'" class="px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Discount Codes</button>
+      <button @click="activeTab = 'orders'; loadOrders()" :class="activeTab === 'orders' ? 'bg-primary-600 text-white' : 'text-gray-600 hover:text-gray-900'" class="px-5 py-2 rounded-lg font-semibold text-sm transition-colors">Orders</button>
+    </div>
+
+    <!-- ── Products Tab ──────────────────────────────────────────────────────── -->
+    <div x-show="activeTab === 'products'">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="font-display text-xl font-bold text-gray-900">Products</h2>
+        <button @click="showProductForm = true; editingProduct = null; resetProductForm()" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">+ Add Product</button>
+      </div>
+
+      <!-- Add/Edit Product form -->
+      <div x-show="showProductForm" x-cloak class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-6">
+        <h3 class="font-semibold text-lg text-gray-900 mb-4" x-text="editingProduct ? 'Edit Product' : 'New Product'"></h3>
+        <form @submit.prevent="saveProduct()" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Product Name *</label>
+            <input x-model="productForm.name" type="text" required placeholder="e.g. Show Stoppers Hoodie"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+            <textarea x-model="productForm.description" rows="3" placeholder="Describe the product…"
+                      class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Price ($) *</label>
+            <input x-model="productForm.price" type="number" step="0.01" min="0.01" required placeholder="29.99"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Base Stock Count *</label>
+            <input x-model="productForm.stock_count" type="number" min="0" required placeholder="50"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Image URLs (one per line)</label>
+            <textarea x-model="productForm.image_urls_text" rows="3" placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
+                      class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"></textarea>
+          </div>
+          <div x-show="editingProduct" class="sm:col-span-2 flex items-center gap-2">
+            <input x-model="productForm.is_active" type="checkbox" id="product-active" class="w-4 h-4 text-primary-600">
+            <label for="product-active" class="text-sm font-medium text-gray-700">Active (visible in store)</label>
+          </div>
+          <p x-show="productFormError" x-text="productFormError" class="sm:col-span-2 text-sm text-red-500"></p>
+          <div class="sm:col-span-2 flex gap-3">
+            <button type="submit" :disabled="productFormLoading" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors">
+              <span x-show="!productFormLoading" x-text="editingProduct ? 'Save Changes' : 'Create Product'"></span>
+              <span x-show="productFormLoading">Saving…</span>
+            </button>
+            <button type="button" @click="showProductForm = false; editingProduct = null" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-semibold text-sm transition-colors">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Products list -->
+      <div x-show="productsLoading" class="text-center py-12">
+        <svg class="animate-spin w-8 h-8 text-primary-600 mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+      </div>
+      <div x-show="!productsLoading && products.length === 0" class="text-center py-12 text-gray-500">No products yet. Add your first product above.</div>
+      <div x-show="!productsLoading" class="space-y-4">
+        <template x-for="product in products" :key="product.id">
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+              <!-- Image thumbnail -->
+              <div class="w-16 h-16 rounded-xl bg-gray-100 flex-shrink-0 overflow-hidden">
+                <img x-show="product.image_urls && product.image_urls.length > 0" :src="product.image_urls[0]" :alt="product.name" class="w-full h-full object-cover">
+                <div x-show="!product.image_urls || product.image_urls.length === 0" class="w-full h-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01"/></svg>
+                </div>
+              </div>
+              <!-- Info -->
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-semibold text-gray-900" x-text="product.name"></h3>
+                  <span :class="product.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'"
+                        class="text-xs font-semibold px-2 py-0.5 rounded-full" x-text="product.is_active ? 'Active' : 'Hidden'"></span>
+                </div>
+                <p class="text-sm text-gray-500 truncate mt-0.5" x-text="product.description || 'No description'"></p>
+                <div class="flex items-center gap-4 mt-1.5 text-sm">
+                  <span class="font-bold text-primary-600" x-text="'$' + (product.price_cents / 100).toFixed(2)"></span>
+                  <span class="text-gray-500" x-text="'Stock: ' + product.stock_count"></span>
+                  <span class="text-gray-500" x-text="(product.variants ? product.variants.filter(v => v.is_active).length : 0) + ' variants'"></span>
+                </div>
+              </div>
+              <!-- Actions -->
+              <div class="flex items-center gap-2 flex-shrink-0">
+                <button @click="openVariantManager(product)" class="px-3 py-1.5 text-xs font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Variants</button>
+                <button @click="startEditProduct(product)" class="px-3 py-1.5 text-xs font-semibold text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-lg transition-colors">Edit</button>
+                <button @click="confirmDeleteProduct(product)" class="px-3 py-1.5 text-xs font-semibold text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors">Delete</button>
+              </div>
+            </div>
+
+            <!-- Variant manager (inline) -->
+            <div x-show="variantManagerProductId === product.id" x-cloak class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="font-semibold text-sm text-gray-700">Size / Color Variants</h4>
+                <button @click="showVariantForm = !showVariantForm" class="text-xs font-semibold text-primary-600 hover:text-primary-700">+ Add Variant</button>
+              </div>
+
+              <!-- Add variant form -->
+              <div x-show="showVariantForm" x-cloak class="bg-gray-50 rounded-xl p-4 mb-3">
+                <div class="grid grid-cols-3 gap-3">
+                  <div>
+                    <label class="block text-xs font-medium text-gray-600 mb-1">Size</label>
+                    <input x-model="variantForm.size" type="text" placeholder="S, M, L…" class="w-full border border-gray-300 rounded-lg px-2.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-gray-600 mb-1">Color</label>
+                    <input x-model="variantForm.color" type="text" placeholder="Black…" class="w-full border border-gray-300 rounded-lg px-2.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-gray-600 mb-1">Stock</label>
+                    <input x-model="variantForm.stock_count" type="number" min="0" placeholder="10" class="w-full border border-gray-300 rounded-lg px-2.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                  </div>
+                </div>
+                <div class="flex gap-2 mt-3">
+                  <button @click="addVariant(product.id)" class="bg-primary-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-primary-700 transition-colors">Add</button>
+                  <button @click="showVariantForm = false" class="bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-300 transition-colors">Cancel</button>
+                </div>
+              </div>
+
+              <!-- Variant list -->
+              <div x-show="!product.variants || product.variants.filter(v=>v.is_active).length === 0" class="text-xs text-gray-400 italic">No variants yet. Products without variants use the base stock count.</div>
+              <div class="space-y-2">
+                <template x-for="v in (product.variants || []).filter(v => v.is_active)" :key="v.id">
+                  <div class="flex items-center justify-between bg-white border border-gray-200 rounded-lg px-3 py-2">
+                    <span class="text-sm font-medium text-gray-700" x-text="[v.size, v.color].filter(Boolean).join(' / ') || 'Default'"></span>
+                    <div class="flex items-center gap-3">
+                      <span class="text-sm text-gray-500" x-text="'Stock: ' + v.stock_count"></span>
+                      <button @click="removeVariant(product, v.id)" class="text-red-400 hover:text-red-600 text-xs font-semibold">Remove</button>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <!-- ── Discount Codes Tab ─────────────────────────────────────────────────── -->
+    <div x-show="activeTab === 'discounts'" x-cloak>
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="font-display text-xl font-bold text-gray-900">Discount Codes</h2>
+        <button @click="showDiscountForm = !showDiscountForm; resetDiscountForm()" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">+ New Code</button>
+      </div>
+
+      <!-- New discount form -->
+      <div x-show="showDiscountForm" x-cloak class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-6">
+        <h3 class="font-semibold text-lg text-gray-900 mb-4">Create Discount Code</h3>
+        <form @submit.prevent="createDiscount()" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Code *</label>
+            <input x-model="discountForm.code" type="text" required placeholder="SAVE20" style="text-transform:uppercase"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Discount Type *</label>
+            <select x-model="discountForm.discount_type" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+              <option value="percent">Percentage (%)</option>
+              <option value="fixed">Fixed Amount ($)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1" x-text="discountForm.discount_type === 'percent' ? 'Percentage (1-100) *' : 'Amount in cents *'"></label>
+            <input x-model="discountForm.value" type="number" min="1" required :placeholder="discountForm.discount_type === 'percent' ? '20' : '500'"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <p class="text-xs text-gray-400 mt-1" x-text="discountForm.discount_type === 'fixed' ? 'Enter in cents — e.g. 500 = $5.00' : ''"></p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Max Uses (leave blank = unlimited)</label>
+            <input x-model="discountForm.max_uses" type="number" min="1" placeholder="100"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Expiry Date (optional)</label>
+            <input x-model="discountForm.expires_at" type="datetime-local"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+          </div>
+          <p x-show="discountFormError" x-text="discountFormError" class="sm:col-span-2 text-sm text-red-500"></p>
+          <div class="sm:col-span-2 flex gap-3">
+            <button type="submit" :disabled="discountFormLoading" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm">
+              <span x-show="!discountFormLoading">Create Code</span>
+              <span x-show="discountFormLoading">Creating…</span>
+            </button>
+            <button type="button" @click="showDiscountForm = false" class="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-lg font-semibold text-sm">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Codes list -->
+      <div x-show="discountsLoading" class="text-center py-12"><svg class="animate-spin w-8 h-8 text-primary-600 mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg></div>
+      <div x-show="!discountsLoading && discounts.length === 0" class="text-center py-12 text-gray-500">No discount codes yet.</div>
+      <div x-show="!discountsLoading && discounts.length > 0" class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Code</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Discount</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Uses</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Expires</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
+              <th class="px-5 py-3"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <template x-for="code in discounts" :key="code.id">
+              <tr class="hover:bg-gray-50">
+                <td class="px-5 py-3 font-mono font-bold text-gray-900 text-sm" x-text="code.code"></td>
+                <td class="px-5 py-3 text-sm text-gray-700"
+                    x-text="code.discount_type === 'percent' ? code.value + '%' : '$' + (code.value/100).toFixed(2)"></td>
+                <td class="px-5 py-3 text-sm text-gray-500"
+                    x-text="code.uses_count + (code.max_uses ? ' / ' + code.max_uses : ' / ∞')"></td>
+                <td class="px-5 py-3 text-sm text-gray-500"
+                    x-text="code.expires_at ? new Date(code.expires_at).toLocaleDateString() : 'Never'"></td>
+                <td class="px-5 py-3">
+                  <span :class="code.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'"
+                        class="text-xs font-semibold px-2 py-0.5 rounded-full" x-text="code.is_active ? 'Active' : 'Inactive'"></span>
+                </td>
+                <td class="px-5 py-3 text-right">
+                  <button x-show="code.is_active" @click="deactivateDiscount(code.id)" class="text-red-500 hover:text-red-700 text-xs font-semibold">Deactivate</button>
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Orders Tab ─────────────────────────────────────────────────────────── -->
+    <div x-show="activeTab === 'orders'" x-cloak>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+        <h2 class="font-display text-xl font-bold text-gray-900">Orders</h2>
+        <!-- Filters -->
+        <div class="flex gap-2 flex-wrap">
+          <select x-model="orderFilter" @change="loadOrders()" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <option value="">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <input x-model="orderSearch" @input.debounce.400ms="loadOrders()" type="text" placeholder="Search name or email…"
+                 class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-52 focus:outline-none focus:ring-2 focus:ring-primary-500">
+        </div>
+      </div>
+
+      <div x-show="ordersLoading" class="text-center py-12"><svg class="animate-spin w-8 h-8 text-primary-600 mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg></div>
+      <div x-show="!ordersLoading && orders.length === 0" class="text-center py-12 text-gray-500">No orders found.</div>
+
+      <div x-show="!ordersLoading && orders.length > 0" class="space-y-4">
+        <template x-for="order in orders" :key="order.id">
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+              <div class="flex-1 min-w-0">
+                <!-- Header row -->
+                <div class="flex items-center gap-2 flex-wrap mb-1">
+                  <span class="font-mono text-xs text-primary-600 bg-primary-50 px-2 py-0.5 rounded" x-text="order.id.slice(0,8).toUpperCase()"></span>
+                  <span :class="{
+                      'bg-yellow-100 text-yellow-700': order.status === 'pending',
+                      'bg-blue-100 text-blue-700': order.status === 'paid',
+                      'bg-purple-100 text-purple-700': order.status === 'shipped',
+                      'bg-green-100 text-green-700': order.status === 'delivered',
+                      'bg-red-100 text-red-700': order.status === 'cancelled'
+                    }" class="text-xs font-bold px-2 py-0.5 rounded-full capitalize" x-text="order.status"></span>
+                  <span class="text-xs text-gray-400" x-text="new Date(order.created_at).toLocaleDateString()"></span>
+                </div>
+                <p class="font-semibold text-gray-900" x-text="order.customer_name"></p>
+                <p class="text-sm text-gray-500" x-text="order.customer_email"></p>
+                <!-- Items summary -->
+                <div class="mt-2 flex flex-wrap gap-x-4 gap-y-0.5 text-sm text-gray-600">
+                  <template x-for="item in (order.order_items || [])" :key="item.id">
+                    <span x-text="item.product_snapshot.name + ' ×' + item.quantity"></span>
+                  </template>
+                </div>
+                <p class="text-sm font-bold text-gray-900 mt-1.5" x-text="'Total: $' + (order.total_cents / 100).toFixed(2)"></p>
+                <p x-show="order.tracking_number" class="text-xs text-gray-500 mt-0.5" x-text="'Tracking: ' + order.tracking_number"></p>
+              </div>
+
+              <!-- Status update -->
+              <div class="sm:w-56 flex-shrink-0">
+                <div x-show="orderUpdateId !== order.id">
+                  <button @click="startOrderUpdate(order)" class="w-full text-sm font-semibold text-primary-600 border border-primary-300 hover:bg-primary-50 px-4 py-2 rounded-lg transition-colors">Update Status</button>
+                </div>
+                <div x-show="orderUpdateId === order.id" x-cloak class="bg-gray-50 rounded-xl p-3 space-y-2">
+                  <select x-model="orderUpdateForm.status" class="w-full border border-gray-300 rounded-lg px-2.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <option value="pending">Pending</option>
+                    <option value="paid">Paid</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                  <input x-model="orderUpdateForm.tracking_number" type="text" placeholder="Tracking number (optional)"
+                         class="w-full border border-gray-300 rounded-lg px-2.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                  <input x-model="orderUpdateForm.admin_notes" type="text" placeholder="Admin notes (optional)"
+                         class="w-full border border-gray-300 rounded-lg px-2.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+                  <div class="flex gap-2">
+                    <button @click="saveOrderStatus(order.id)" :disabled="orderUpdateLoading" class="flex-1 bg-primary-600 text-white text-xs font-semibold py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                      <span x-show="!orderUpdateLoading">Save</span>
+                      <span x-show="orderUpdateLoading">Saving…</span>
+                    </button>
+                    <button @click="orderUpdateId = null" class="flex-1 bg-gray-200 text-gray-700 text-xs font-semibold py-2 rounded-lg hover:bg-gray-300 transition-colors">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Pagination -->
+      <div x-show="ordersTotal > 20" class="flex justify-center gap-3 mt-6">
+        <button @click="orderPage > 0 && (orderPage--, loadOrders())" :disabled="orderPage === 0" class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-semibold text-gray-600 disabled:opacity-40 hover:bg-gray-50">Previous</button>
+        <span class="px-4 py-2 text-sm text-gray-500" x-text="'Page ' + (orderPage + 1)"></span>
+        <button @click="(orderPage + 1) * 20 < ordersTotal && (orderPage++, loadOrders())" :disabled="(orderPage + 1) * 20 >= ordersTotal" class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-semibold text-gray-600 disabled:opacity-40 hover:bg-gray-50">Next</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Confirm Delete Dialog ──────────────────────────────────────────────── -->
+  <div x-show="confirmDelete" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm text-center">
+      <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+      </div>
+      <h3 class="font-bold text-gray-900 text-lg mb-1">Delete Product</h3>
+      <p class="text-gray-500 text-sm mb-5">This will hide the product from the store. Existing orders are not affected.</p>
+      <div class="flex gap-3">
+        <button @click="confirmDelete = null" class="flex-1 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg font-semibold text-sm hover:bg-gray-200 transition-colors">Cancel</button>
+        <button @click="deleteProduct(confirmDelete)" class="flex-1 px-4 py-2.5 bg-red-600 text-white rounded-lg font-semibold text-sm hover:bg-red-700 transition-colors">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/shop-admin.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { config } from './config.js';
@@ -28,6 +28,22 @@ app.use(
     contentSecurityPolicy: false, // Disable CSP for API
   })
 );
+
+// Capture raw body for Stripe webhook signature verification BEFORE express.json()
+app.use((req: Request, _res: Response, next: NextFunction) => {
+  if (req.originalUrl === '/api/shop/webhook') {
+    let data = Buffer.alloc(0);
+    req.on('data', (chunk: Buffer) => {
+      data = Buffer.concat([data, chunk]);
+    });
+    req.on('end', () => {
+      (req as any).rawBody = data;
+      next();
+    });
+  } else {
+    next();
+  }
+});
 
 app.use(express.json());
 

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed | Show Stoppers Academy</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d' },
+            secondary: { 600:'#ea580c',700:'#c2410c' }
+          },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Poppins','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans text-gray-900 bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Nav -->
+  <nav class="bg-white/95 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center space-x-3">
+        <img src="PIC.png" alt="Show Stoppers Academy" class="w-9 h-9 rounded-full object-cover shadow">
+        <span class="font-display font-bold text-lg text-gray-900">Show Stoppers Academy</span>
+      </a>
+      <a href="/shop.html" class="text-primary-600 font-semibold text-sm hover:text-primary-700">Continue Shopping</a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-1 flex items-center justify-center p-6">
+    <div class="max-w-lg w-full">
+
+      <!-- Success state -->
+      <div id="success-view" class="hidden text-center">
+        <!-- Check icon -->
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h1 class="font-display text-3xl font-bold text-gray-900 mb-2">Order Confirmed!</h1>
+        <p class="text-gray-500 mb-8">Thank you for your purchase. A confirmation email has been sent to you.</p>
+
+        <!-- Order card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-left mb-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Order ID</span>
+            <span id="order-id-display" class="text-sm font-mono text-primary-600 bg-primary-50 px-3 py-1 rounded-full"></span>
+          </div>
+
+          <!-- Items -->
+          <div id="order-items" class="space-y-3 mb-4 pb-4 border-b border-gray-100"></div>
+
+          <!-- Totals -->
+          <div id="order-totals" class="space-y-1.5"></div>
+
+          <!-- Shipping -->
+          <div id="order-shipping" class="mt-4 pt-4 border-t border-gray-100"></div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/shop.html" class="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 rounded-xl text-center transition-colors">
+            Continue Shopping
+          </a>
+          <a href="/index.html" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 rounded-xl text-center transition-colors">
+            Back to Home
+          </a>
+        </div>
+      </div>
+
+      <!-- Loading state -->
+      <div id="loading-view" class="text-center py-16">
+        <svg class="animate-spin w-10 h-10 text-primary-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+        </svg>
+        <p class="text-gray-500">Loading your order…</p>
+      </div>
+
+      <!-- Error state -->
+      <div id="error-view" class="hidden text-center py-16">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </div>
+        <h2 class="font-display text-xl font-bold text-gray-900 mb-2">Order not found</h2>
+        <p class="text-gray-500 mb-6">We couldn't load your order details. Your payment may still have gone through — check your email for confirmation.</p>
+        <a href="/shop.html" class="inline-block bg-primary-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-primary-700 transition-colors">Back to Shop</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    (async function() {
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('order');
+
+      if (!orderId) {
+        document.getElementById('loading-view').classList.add('hidden');
+        document.getElementById('error-view').classList.remove('hidden');
+        return;
+      }
+
+      function getApiBase() {
+        if (window.__SSA_API_BASE__) return window.__SSA_API_BASE__;
+        const saved = localStorage.getItem('ssaApiBase');
+        if (saved) return saved;
+        return window.location.protocol === 'https:'
+          ? 'https://show-stoppers-academy-production.up.railway.app/api'
+          : 'http://localhost:4000/api';
+      }
+
+      try {
+        const res = await fetch(`${getApiBase()}/shop/orders/${orderId}`);
+        if (!res.ok) throw new Error('Order not found');
+        const { order } = await res.json();
+
+        // Populate order ID
+        document.getElementById('order-id-display').textContent = order.id.slice(0, 8).toUpperCase();
+
+        // Items
+        const itemsEl = document.getElementById('order-items');
+        (order.order_items || []).forEach((item) => {
+          const snap = item.product_snapshot;
+          const variant = [snap.size, snap.color].filter(Boolean).join(' / ');
+          itemsEl.innerHTML += `
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-lg bg-gray-100 overflow-hidden flex-shrink-0">
+                ${snap.image_url ? `<img src="${snap.image_url}" alt="${snap.name}" class="w-full h-full object-cover">` : `<div class="w-full h-full flex items-center justify-center"><svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>`}
+              </div>
+              <div class="flex-1">
+                <p class="font-semibold text-sm text-gray-900">${snap.name}${variant ? ` <span class="text-gray-400">(${variant})</span>` : ''}</p>
+                <p class="text-xs text-gray-500">Qty: ${item.quantity}</p>
+              </div>
+              <p class="font-bold text-sm text-gray-900">$${((item.unit_price_cents * item.quantity) / 100).toFixed(2)}</p>
+            </div>`;
+        });
+
+        // Totals
+        const totalsEl = document.getElementById('order-totals');
+        totalsEl.innerHTML = `
+          <div class="flex justify-between text-sm text-gray-600">
+            <span>Subtotal</span><span>$${(order.subtotal_cents / 100).toFixed(2)}</span>
+          </div>
+          ${order.discount_cents > 0 ? `<div class="flex justify-between text-sm text-green-600"><span>Discount</span><span>-$${(order.discount_cents / 100).toFixed(2)}</span></div>` : ''}
+          <div class="flex justify-between font-bold text-gray-900 pt-2 border-t border-gray-100 mt-1">
+            <span>Total</span><span>$${(order.total_cents / 100).toFixed(2)}</span>
+          </div>`;
+
+        // Shipping
+        const addr = order.shipping_address;
+        const shippingEl = document.getElementById('order-shipping');
+        shippingEl.innerHTML = `
+          <p class="text-sm font-semibold text-gray-700 mb-1">Shipping To</p>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            ${order.customer_name}<br>
+            ${addr.line1}${addr.line2 ? ', ' + addr.line2 : ''}<br>
+            ${addr.city}, ${addr.state} ${addr.postal_code}<br>
+            ${addr.country}
+          </p>`;
+
+        document.getElementById('loading-view').classList.add('hidden');
+        document.getElementById('success-view').classList.remove('hidden');
+
+      } catch (err) {
+        document.getElementById('loading-view').classList.add('hidden');
+        document.getElementById('error-view').classList.remove('hidden');
+      }
+    })();
+  </script>
+</body>
+</html>

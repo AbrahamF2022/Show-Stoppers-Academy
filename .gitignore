@@ -12,6 +12,7 @@ server/.env
 dist/
 build/
 server/dist/
+_site/
 
 # IDE
 .vscode/
@@ -30,9 +31,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Lock files (optional - you may want to commit these)
-# package-lock.json
-# yarn.lock
+# Salesforce
+.sfdx/
 
-
-
+# Large media that breaks GitHub Pages deploys (keep locally if needed)
+*.mp4
+*.MOV
+*.mov
+!Showstoppersvid.mov
+*.HEIC
+*.heic
+*.pdf

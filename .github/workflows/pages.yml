@@ -1,0 +1,63 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare site package
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '_site' \
+            --exclude 'node_modules' \
+            --exclude 'server/node_modules' \
+            --exclude 'server/dist' \
+            --exclude '.sfdx' \
+            --exclude '*.mp4' \
+            --exclude '*.MOV' \
+            --exclude '*.mov' \
+            --exclude '*.HEIC' \
+            --exclude '*.heic' \
+            --exclude '*.pdf' \
+            ./ _site/
+          # Keep the one gallery video used on the site
+          if [ -f Showstoppersvid.mov ]; then
+            cp -f Showstoppersvid.mov _site/
+          fi
+          echo "Site package size:"
+          du -sh _site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
